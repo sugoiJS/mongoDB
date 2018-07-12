@@ -1,0 +1,35 @@
+{
+  "name": "@sugoi/mongodb",
+  "version": "1.0.8",
+  "description": "sugoi framework mongodb handler",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "..\\node_modules\\.bin\\typedoc --out ..\\dist\\docs\\mongoDB --excludeNotExported --excludeProtected --excludePrivate --readme .\\README.md --mode modules --hideGenerator",
+    "update:patch": "rmdir /S dist && tsc && npm version patch && npm publish && npm run docs",
+    "update:minor": "rmdir /S dist && tsc && npm version minor && npm publish && npm run docs",
+    "update:major": "rmdir /S dist && tsc && npm version major && npm publish && npm run docs"
+  },
+  "keywords": [
+    "@sugoi",
+    "sugoi",
+    "mongoDB",
+    "framework",
+    "orm"
+  ],
+  "files": [
+    "dist/**/*"
+  ],
+  "author": "Orel Balilti",
+  "license": "MIT",
+  "dependencies": {
+    "@sugoi/core": "1.0.3",
+    "mongodb": "^3.0.10",
+    "rxjs": "^5.5.6"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.0.19",
+    "typescript": "^2.7.3"
+  }
+}
