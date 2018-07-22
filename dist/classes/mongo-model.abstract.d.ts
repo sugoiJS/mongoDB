@@ -6,6 +6,7 @@ export declare abstract class MongoModel extends ConnectableModel {
     protected client: MongoClient;
     protected collection: Collection;
     protected _id: ObjectID;
+    protected static ConnectionType: typeof MongoConnection;
     constructor();
     static getIdObject(id: string): ObjectID;
     protected static getCollection(connectionName: string, collectionName: string): Observable<Collection>;
@@ -23,6 +24,6 @@ export declare abstract class MongoModel extends ConnectableModel {
     static clone(classIns: any, data: any): any;
     static connectEmitter(connection: MongoConnection): Observable<{
         dbInstance: Db;
-        client: any;
+        client: MongoClient;
     }>;
 }

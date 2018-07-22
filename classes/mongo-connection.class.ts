@@ -1,7 +1,8 @@
-import {injectable,Connection} from "@sugoi/core/dist"
+import {Connection,injectable} from "@sugoi/core";
+import {IConnectionConfig} from "@sugoi/core/dist/interfaces/connection-config.interface";
 
 @injectable()
-export class MongoConnection extends Connection {
+export class MongoConnection extends Connection{
 
 
     protected constructor(hostName: string,
@@ -9,6 +10,7 @@ export class MongoConnection extends Connection {
                           port: number = 27017) {
         super(hostName, db, port);
     }
+
 
     public disconnect(){
         const connection = this.getConnection();

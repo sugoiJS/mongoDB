@@ -13,7 +13,7 @@ As all of the "Sugoi" modules, this module is stand alone and can act without ot
 
 Sugoi mongoDB package provide ORM solution for mongoDB.
 
-This package relays on the Sugoi core ORM infrastructure.
+This package relays on the Sugoi core ORM infrastructure using the ConnectableModel abstract class.
 
 ## Installation
 
@@ -21,17 +21,24 @@ This package relays on the Sugoi core ORM infrastructure.
 
 ### Bootstrapping
 
+Bootstrapping done by one line only:
+
+> MongoModel.setConnection(configuration:IConnectionConfig,connectionName:string = "default)
+
+The connectionName is used for multiple connection
+
+Example:
+
     import {MongoModel} from "@sugoi/mongodb";
 
-    MongoModel.setConfig({
+    MongoModel.setConnection({
                             port: 27017,
                             protocol: "mongodb://",
                             hostName: "my-mongo.services.com",
                             db: "myAuthDB", //authorization DB
                             user: "dbUser",
                             password: "dbPassword"
-                          });
-    MongoModel.connect("myDataDB");
+                          }, "adminDB");
 
 
 ### Create Model
@@ -63,7 +70,25 @@ For override the collection name you can just set the collectionName property
             super();
             this.userId = userId;
             this.body = body;
-            collectionName = "my-app-message"
+            this.collectionName = "my-app-message";
+        }
+    }
+
+##### Using connections
+
+For using different connection for each model all you need to do
+
+is override the connnectionName with your connection name
+export class Message extends MongoModel {
+            public userId:string;
+            public body:string;
+
+        constructor(userId:string,body:string){
+            super();
+            this.userId = userId;
+            this.body = body;
+            this.collectionName = "my-app-message";
+            this.connectionName = "adminDB";
         }
     }
 

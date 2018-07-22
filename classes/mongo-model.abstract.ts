@@ -2,7 +2,7 @@ import {Observable} from "rxjs/Observable";
 import {Collection, Db, MongoClient, MongoClientOptions, ObjectID} from "mongodb";
 import {ConnectableModel, ModelException} from "@sugoi/core/dist";
 import {MongoConnection} from "./mongo-connection.class";
-import {map} from "rxjs/operators";
+import {map, pluck} from "rxjs/operators";
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -11,6 +11,8 @@ export abstract class MongoModel extends ConnectableModel {
     protected collection: Collection;
 
     protected _id: ObjectID;
+
+    protected static ConnectionType = MongoConnection;
 
     constructor() {
         super();
@@ -24,7 +26,7 @@ export abstract class MongoModel extends ConnectableModel {
     protected static getCollection(connectionName: string, collectionName: string): Observable<Collection> {
         return MongoModel.connect(connectionName)
             .pipe(
-                map((connection: MongoConnection) => connection.connection.dbInstance),
+                pluck('dbInstance'),
                 map((db: Db) => db.collection(collectionName))
             );
     }
@@ -136,7 +138,7 @@ export abstract class MongoModel extends ConnectableModel {
         return super.clone(classIns, data);
     }
 
-    public static connectEmitter(connection: MongoConnection): Observable<{dbInstance:Db,client:any}> {
+    public static connectEmitter(connection: MongoConnection): Observable<{dbInstance:Db,client:MongoClient}> {
         const connectionConfig = {
             authSource: connection.authDB || connection.db
         };
@@ -148,7 +150,7 @@ export abstract class MongoModel extends ConnectableModel {
         }
 
         const promise = MongoClient.connect(connection.getConnectionString(), connectionConfig)
-            .then((client) => {
+            .then((client:MongoClient) => {
                 return {
                     dbInstance: client.db(connection.db),
                     client
