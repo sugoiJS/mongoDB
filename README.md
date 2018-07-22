@@ -1,4 +1,4 @@
-# @Sugoi\socket
+# @Sugoi\mongoDB
 
 ![Sugoi logo](https://www.sugoijs.com/assets/logo_inverse.png)
 
