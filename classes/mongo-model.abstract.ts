@@ -1,10 +1,10 @@
 import {Observable} from "rxjs/Observable";
 import {Collection, Db, MongoClient, MongoClientOptions, ObjectID} from "mongodb";
-import {ConnectableModel, CONNECTION_STATUS, ModelException} from "@sugoi/core";
-import {IMongoConfig, MongoConfig} from "../index";
+import {ConnectableModel, ModelException} from "@sugoi/core/dist";
+import {MongoConnection} from "./mongo-connection.class";
+import {map} from "rxjs/operators";
 
 export abstract class MongoModel extends ConnectableModel {
-    protected static connString: string;
 
     protected client: MongoClient;
 
@@ -17,17 +17,16 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    protected static getConnectionString(config: IMongoConfig) {
-        let connString = `mongodb://`;
-        if (config.user && config.password) {
-            connString += `${config.user}:${config.password}@`;
-        }
-        connString += `${config.hostName}:${config.port}`;
-        return connString;
-    }
-
     public static getIdObject(id: string) {
         return new ObjectID(id);
+    }
+
+    protected static getCollection(connectionName: string, collectionName: string): Observable<Collection> {
+        return MongoModel.connect(connectionName)
+            .pipe(
+                map((connection: MongoConnection) => connection.connection.dbInstance),
+                map((db: Db) => db.collection(collectionName))
+            );
     }
 
     public getMongoId() {
@@ -35,23 +34,15 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
     protected async setCollection() {
-        if (this.collection) return Promise.resolve();
-        this.collection = await MongoModel.getCollection(this.collectionName).toPromise();
-    }
-
-    protected static getCollection(collectionName: string): Observable<Collection> {
-        return MongoModel.connect(this.DBName)
-            .map((db: Db) => db.collection(collectionName));
+        if (this.collection) return Promise.resolve(this.collection);
+        this.collection = await MongoModel.getCollection(this.constructor['connectionName'], this.collectionName).toPromise();
     }
 
 
-
-
-    public static disconnect() {
-        MongoModel.client.close(true)
-            .then(() => {
-                MongoModel.status = CONNECTION_STATUS.DISCONNECTED;
-            });
+    public static disconnect(connectionName: string): Promise<any> {
+        return this.connections.has(connectionName)
+            ? this.connections.get(connectionName).disconnect()
+            : Promise.resolve(null)
     }
 
     protected static findEmitter(query: any, options: MongoClientOptions = {}): Observable<object> {
@@ -59,7 +50,7 @@ export abstract class MongoModel extends ConnectableModel {
         if (query.hasOwnProperty("_id")) {
             query._id = MongoModel.getIdObject(query._id);
         }
-        return MongoModel.getCollection(that.name)
+        return MongoModel.getCollection( that.connectionName ,that.name)
             .flatMap(collection => {
                 return collection.find(query)
                     .toArray()
@@ -140,32 +131,29 @@ export abstract class MongoModel extends ConnectableModel {
         return temp;
     }
 
-    protected static clone(classIns: any, data: any): object {
+    public static clone(classIns: any, data: any): any {
         data._id = data._id.toString();
         return super.clone(classIns, data);
     }
 
-    public static connectEmitter(config: MongoConfig): Observable<Db> {
+    public static connectEmitter(connection: MongoConnection): Observable<{dbInstance:Db,client:any}> {
         const connectionConfig = {
-            authSource: config.authDB || config.db
+            authSource: connection.authDB || connection.db
         };
-        if (config.user && config.password) {
+        if (connection.user && connection.password) {
             connectionConfig['auth'] = {
-                user: config.user,
-                password: config.password
+                user: connection.user,
+                password: connection.password
             };
         }
 
-        if (config.status === CONNECTION_STATUS.CONNECTED) {
-            return Observable.of(config.dbInstance);
-        } else {
-            const promise = MongoClient.connect(MongoModel.getConnectionString(config), connectionConfig)
-                .then((client) => {
-                    config.dbInstance = client.db(this.DBName);
-                    config.setStatus(CONNECTION_STATUS.CONNECTED);
-                    return config.dbInstance;
-                });
-            return Observable.fromPromise(promise);
-        }
+        const promise = MongoClient.connect(connection.getConnectionString(), connectionConfig)
+            .then((client) => {
+                return {
+                    dbInstance: client.db(connection.db),
+                    client
+                }
+            });
+        return Observable.fromPromise(promise);
     }
 }

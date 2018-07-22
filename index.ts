@@ -2,7 +2,7 @@ export {SugoiMongoError} from "./exceptions/mongo.exception";
 
 export {Exceptions} from "./constants/exceptions.constant";
 
-export {MongoConfig} from "./classes/mongo-config";
+export {MongoConnection} from "./classes/mongo-connection.class";
 
 export {MongoModel} from "./classes/mongo-model.abstract";
 

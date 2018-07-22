@@ -1,14 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -17,150 +7,59 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var Observable_1 = require("rxjs/Observable");
-var mongodb_1 = require("mongodb");
-var core_1 = require("@sugoi/core");
-var index_1 = require("../index");
-var MongoModel = /** @class */ (function (_super) {
-    __extends(MongoModel, _super);
-    function MongoModel() {
-        return _super.call(this) || this;
+const Observable_1 = require("rxjs/Observable");
+const mongodb_1 = require("mongodb");
+const dist_1 = require("@sugoi/core/dist");
+const operators_1 = require("rxjs/operators");
+class MongoModel extends dist_1.ConnectableModel {
+    constructor() {
+        super();
     }
-    Object.defineProperty(MongoModel, "DBName", {
-        get: function () {
-            return this._DBName || MongoModel.config.values().next().value.db;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    MongoModel.setConfig = function (configData) {
-        var castConfigData = index_1.MongoConfig.clone(configData);
-        MongoModel.config.set(configData.db, castConfigData);
-    };
-    MongoModel.getConnectionString = function (config) {
-        var connString = "mongodb://";
-        if (config.user && config.password) {
-            connString += config.user + ":" + config.password + "@";
-        }
-        connString += config.hostName + ":" + config.port;
-        return connString;
-    };
-    MongoModel.getIdObject = function (id) {
+    static getIdObject(id) {
         return new mongodb_1.ObjectID(id);
-    };
-    MongoModel.prototype.getMongoId = function () {
+    }
+    static getCollection(connectionName, collectionName) {
+        return MongoModel.connect(connectionName)
+            .pipe(operators_1.map((connection) => connection.connection.dbInstance), operators_1.map((db) => db.collection(collectionName)));
+    }
+    getMongoId() {
         return this._id.toString();
-    };
-    MongoModel.prototype.setCollection = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (this.collection)
-                            return [2 /*return*/, Promise.resolve()];
-                        _a = this;
-                        return [4 /*yield*/, MongoModel.getCollection(this.collectionName).toPromise()];
-                    case 1:
-                        _a.collection = _b.sent();
-                        return [2 /*return*/];
-                }
-            });
+    }
+    setCollection() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.collection)
+                return Promise.resolve(this.collection);
+            this.collection = yield MongoModel.getCollection(this.constructor['connectionName'], this.collectionName).toPromise();
         });
-    };
-    MongoModel.getCollection = function (collectionName) {
-        return MongoModel.connect(this.DBName)
-            .map(function (db) { return db.collection(collectionName); });
-    };
-    MongoModel.connect = function (db) {
-        var _this = this;
-        if (!db) {
-            db = this.DBName;
-        }
-        var config = MongoModel.config.get(db);
-        if (!config) {
-            throw new index_1.SugoiMongoError(index_1.Exceptions.CONFIGURATION_MISSING.message, index_1.Exceptions.CONFIGURATION_MISSING.code);
-        }
-        var connectionConfig = {
-            authSource: config.authDB || config.db
-        };
-        if (config.user && config.password) {
-            connectionConfig['auth'] = {
-                user: config.user,
-                password: config.password
-            };
-        }
-        if (config.status === core_1.CONNECTION_STATUS.CONNECTED) {
-            return Observable_1.Observable.of(config.dbInstance);
-        }
-        else {
-            var promise = mongodb_1.MongoClient.connect(MongoModel.getConnectionString(config), connectionConfig)
-                .then(function (client) {
-                config.dbInstance = client.db(_this.DBName);
-                config.setStatus(core_1.CONNECTION_STATUS.CONNECTED);
-                return config.dbInstance;
-            });
-            return Observable_1.Observable.fromPromise(promise);
-        }
-    };
-    MongoModel.disconnect = function () {
-        MongoModel.client.close(true)
-            .then(function () {
-            MongoModel.status = core_1.CONNECTION_STATUS.DISCONNECTED;
-        });
-    };
-    MongoModel.findEmitter = function (query, options) {
-        if (options === void 0) { options = {}; }
-        var that = this;
+    }
+    static disconnect(connectionName) {
+        return this.connections.has(connectionName)
+            ? this.connections.get(connectionName).disconnect()
+            : Promise.resolve(null);
+    }
+    static findEmitter(query, options = {}) {
+        const that = this;
         if (query.hasOwnProperty("_id")) {
             query._id = MongoModel.getIdObject(query._id);
         }
-        return MongoModel.getCollection(that.name)
-            .flatMap(function (collection) {
+        return MongoModel.getCollection(that.connectionName, that.name)
+            .flatMap(collection => {
             return collection.find(query)
                 .toArray()
-                .then(function (res) {
+                .then((res) => {
                 if (res.length === 0) {
-                    throw new core_1.ModelException("Not Found", 404);
+                    throw new dist_1.ModelException("Not Found", 404);
                 }
                 return res;
             });
         });
-    };
-    MongoModel.prototype.saveEmitter = function (options) {
-        var _this = this;
+    }
+    saveEmitter(options) {
         return this.setCollection()
-            .then(function () {
-            return new Promise(function (resolve, reject) {
-                _this.collection.insertOne(_this.formalize(), options, function (err, value) {
+            .then(() => {
+            return new Promise((resolve, reject) => {
+                this.collection.insertOne(this.formalize(), options, (err, value) => {
                     if (err) {
                         console.error(err);
                         reject(err);
@@ -171,13 +70,12 @@ var MongoModel = /** @class */ (function (_super) {
                 });
             });
         });
-    };
-    MongoModel.prototype.updateEmitter = function (options) {
-        var _this = this;
+    }
+    updateEmitter(options) {
         return this.setCollection()
-            .then(function () {
-            return new Promise(function (resolve, reject) {
-                _this.collection.updateOne({ "_id": _this.id }, _this.formalize(), options, function (err, value) {
+            .then(() => {
+            return new Promise((resolve, reject) => {
+                this.collection.updateOne({ "_id": this.id }, this.formalize(), options, (err, value) => {
                     if (err) {
                         reject(err);
                     }
@@ -187,12 +85,11 @@ var MongoModel = /** @class */ (function (_super) {
                 });
             });
         });
-    };
-    MongoModel.prototype.removeEmitter = function () {
-        var _this = this;
-        return this.setCollection().then(function () {
-            return new Promise(function (resolve, reject) {
-                _this.collection.deleteOne({ "_id": _this.id }, function (err, value) {
+    }
+    removeEmitter(query = { "_id": this.id }) {
+        return this.setCollection().then(() => {
+            return new Promise((resolve, reject) => {
+                this.collection.deleteOne(query, (err, value) => {
                     if (err) {
                         reject(err);
                     }
@@ -202,30 +99,46 @@ var MongoModel = /** @class */ (function (_super) {
                 });
             });
         });
-    };
-    MongoModel.prototype.formalize = function () {
-        var _this = this;
-        var objToReturn = {};
-        Object.keys(this).forEach(function (key) {
-            if (typeof _this[key] != "function"
-                && !(_this[key] && _this[key].constructor && _this[key].constructor.name == "Collection")) {
-                objToReturn[key] = _this[key];
+    }
+    formalize() {
+        const objToReturn = {};
+        Object.keys(this).forEach((key) => {
+            if (typeof this[key] != "function"
+                && !(this[key] && this[key].constructor && this[key].constructor.name == "Collection")) {
+                objToReturn[key] = this[key];
             }
         });
         return objToReturn;
-    };
-    MongoModel.prototype.toJSON = function () {
-        var temp = Object.assign({}, this);
+    }
+    toJSON() {
+        const temp = Object.assign({}, this);
         temp.id = this.getMongoId();
         delete temp['collection'];
         delete temp['_id'];
         return temp;
-    };
-    MongoModel.clone = function (classIns, data) {
+    }
+    static clone(classIns, data) {
         data._id = data._id.toString();
-        return _super.clone.call(this, classIns, data);
-    };
-    MongoModel.config = new Map();
-    return MongoModel;
-}(core_1.ModelAbstract));
+        return super.clone(classIns, data);
+    }
+    static connectEmitter(connection) {
+        const connectionConfig = {
+            authSource: connection.authDB || connection.db
+        };
+        if (connection.user && connection.password) {
+            connectionConfig['auth'] = {
+                user: connection.user,
+                password: connection.password
+            };
+        }
+        const promise = mongodb_1.MongoClient.connect(connection.getConnectionString(), connectionConfig)
+            .then((client) => {
+            return {
+                dbInstance: client.db(connection.db),
+                client
+            };
+        });
+        return Observable_1.Observable.fromPromise(promise);
+    }
+}
 exports.MongoModel = MongoModel;

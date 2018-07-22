@@ -1,6 +1,4 @@
+import { IExceptionConstant } from "@sugoi/core";
 export declare const Exceptions: {
-    CONFIGURATION_MISSING: {
-        message: string;
-        code: number;
-    };
+    [prop: string]: IExceptionConstant;
 };

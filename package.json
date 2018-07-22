@@ -1,7 +1,7 @@
 {
   "name": "@sugoi/mongodb",
   "version": "1.0.8",
-  "description": "sugoi framework mongodb handler",
+  "description": "Sugoi mongodb package",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -15,16 +15,16 @@
     "@sugoi",
     "sugoi",
     "mongoDB",
-    "framework",
     "orm"
   ],
+  "homepage": "sugoijs.com",
   "files": [
     "dist/**/*"
   ],
   "author": "Orel Balilti",
   "license": "MIT",
   "dependencies": {
-    "@sugoi/core": "^1.0.6",
+    "@sugoi/core": "^1.0.8-beta-5",
     "mongodb": "^3.0.10",
     "rxjs": "^5.5.6"
   },
