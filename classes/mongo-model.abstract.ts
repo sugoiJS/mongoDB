@@ -1,8 +1,6 @@
-import {Observable} from "rxjs/Observable";
 import {Collection, Db, MongoClient, MongoClientOptions, ObjectID} from "mongodb";
-import {ConnectableModel, ModelException} from "@sugoi/core/dist";
 import {MongoConnection} from "./mongo-connection.class";
-import {map, pluck} from "rxjs/operators";
+import {ConnectableModel, ModelException} from "@sugoi/core";
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -23,12 +21,10 @@ export abstract class MongoModel extends ConnectableModel {
         return new ObjectID(id);
     }
 
-    protected static getCollection(connectionName: string, collectionName: string): Observable<Collection> {
+    protected static getCollection(connectionName: string, collectionName: string): Promise<Collection> {
         return MongoModel.connect(connectionName)
-            .pipe(
-                pluck('dbInstance'),
-                map((db: Db) => db.collection(collectionName))
-            );
+            .then(data => data.dbInstance)
+            .then((db: Db) => db.collection(collectionName))
     }
 
     public getMongoId() {
@@ -37,7 +33,7 @@ export abstract class MongoModel extends ConnectableModel {
 
     protected async setCollection() {
         if (this.collection) return Promise.resolve(this.collection);
-        this.collection = await MongoModel.getCollection(this.constructor['connectionName'], this.collectionName).toPromise();
+        this.collection = await MongoModel.getCollection(this.constructor['connectionName'], this.collectionName);
     }
 
 
@@ -47,13 +43,13 @@ export abstract class MongoModel extends ConnectableModel {
             : Promise.resolve(null)
     }
 
-    protected static findEmitter(query: any, options: MongoClientOptions = {}): Observable<object> {
+    protected static findEmitter(query: any, options: MongoClientOptions = {}): Promise<any> {
         const that = this;
         if (query.hasOwnProperty("_id")) {
             query._id = MongoModel.getIdObject(query._id);
         }
-        return MongoModel.getCollection( that.connectionName ,that.name)
-            .flatMap(collection => {
+        return MongoModel.getCollection(that.connectionName, that.name)
+            .then(collection => {
                 return collection.find(query)
                     .toArray()
                     .then((res) => {
@@ -138,7 +134,7 @@ export abstract class MongoModel extends ConnectableModel {
         return super.clone(classIns, data);
     }
 
-    public static connectEmitter(connection: MongoConnection): Observable<{dbInstance:Db,client:MongoClient}> {
+    public static connectEmitter(connection: MongoConnection): Promise<{ dbInstance: Db, client: MongoClient }> {
         const connectionConfig = {
             authSource: connection.authDB || connection.db
         };
@@ -149,13 +145,13 @@ export abstract class MongoModel extends ConnectableModel {
             };
         }
 
-        const promise = MongoClient.connect(connection.getConnectionString(), connectionConfig)
-            .then((client:MongoClient) => {
+        return MongoClient.connect(connection.getConnectionString(), connectionConfig)
+            .then((client: MongoClient) => {
+                client.on("error", () => this.disconnect(connection.connectionName));
                 return {
                     dbInstance: client.db(connection.db),
                     client
                 }
             });
-        return Observable.fromPromise(promise);
     }
 }

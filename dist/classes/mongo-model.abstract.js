@@ -45,11 +45,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Observable_1 = require("rxjs/Observable");
 var mongodb_1 = require("mongodb");
-var dist_1 = require("@sugoi/core/dist");
 var mongo_connection_class_1 = require("./mongo-connection.class");
-var operators_1 = require("rxjs/operators");
+var core_1 = require("@sugoi/core");
 var MongoModel = /** @class */ (function (_super) {
     __extends(MongoModel, _super);
     function MongoModel() {
@@ -60,7 +58,8 @@ var MongoModel = /** @class */ (function (_super) {
     };
     MongoModel.getCollection = function (connectionName, collectionName) {
         return MongoModel.connect(connectionName)
-            .pipe(operators_1.pluck('dbInstance'), operators_1.map(function (db) { return db.collection(collectionName); }));
+            .then(function (data) { return data.dbInstance; })
+            .then(function (db) { return db.collection(collectionName); });
     };
     MongoModel.prototype.getMongoId = function () {
         return this._id.toString();
@@ -74,7 +73,7 @@ var MongoModel = /** @class */ (function (_super) {
                         if (this.collection)
                             return [2 /*return*/, Promise.resolve(this.collection)];
                         _a = this;
-                        return [4 /*yield*/, MongoModel.getCollection(this.constructor['connectionName'], this.collectionName).toPromise()];
+                        return [4 /*yield*/, MongoModel.getCollection(this.constructor['connectionName'], this.collectionName)];
                     case 1:
                         _a.collection = _b.sent();
                         return [2 /*return*/];
@@ -94,12 +93,12 @@ var MongoModel = /** @class */ (function (_super) {
             query._id = MongoModel.getIdObject(query._id);
         }
         return MongoModel.getCollection(that.connectionName, that.name)
-            .flatMap(function (collection) {
+            .then(function (collection) {
             return collection.find(query)
                 .toArray()
                 .then(function (res) {
                 if (res.length === 0) {
-                    throw new dist_1.ModelException("Not Found", 404);
+                    throw new core_1.ModelException("Not Found", 404);
                 }
                 return res;
             });
@@ -177,6 +176,7 @@ var MongoModel = /** @class */ (function (_super) {
         return _super.clone.call(this, classIns, data);
     };
     MongoModel.connectEmitter = function (connection) {
+        var _this = this;
         var connectionConfig = {
             authSource: connection.authDB || connection.db
         };
@@ -186,16 +186,16 @@ var MongoModel = /** @class */ (function (_super) {
                 password: connection.password
             };
         }
-        var promise = mongodb_1.MongoClient.connect(connection.getConnectionString(), connectionConfig)
+        return mongodb_1.MongoClient.connect(connection.getConnectionString(), connectionConfig)
             .then(function (client) {
+            client.on("error", function () { return _this.disconnect(connection.connectionName); });
             return {
                 dbInstance: client.db(connection.db),
                 client: client
             };
         });
-        return Observable_1.Observable.fromPromise(promise);
     };
     MongoModel.ConnectionType = mongo_connection_class_1.MongoConnection;
     return MongoModel;
-}(dist_1.ConnectableModel));
+}(core_1.ConnectableModel));
 exports.MongoModel = MongoModel;
