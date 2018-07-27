@@ -1,6 +1,6 @@
 import {Collection, Db, MongoClient, MongoClientOptions, ObjectID} from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
-import {ConnectableModel, SugModelException} from "@sugoi/core";
+import {ConnectableModel, SugoiModelException} from "@sugoi/core";
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -54,7 +54,7 @@ export abstract class MongoModel extends ConnectableModel {
                     .toArray()
                     .then((res) => {
                         if (res.length === 0) {
-                            throw new SugModelException("Not Found", 404);
+                            throw new SugoiModelException("Not Found", 404);
                         }
                         return res;
                     });
