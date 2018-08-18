@@ -110,7 +110,9 @@ The model has some main methods:
 
 ### Model lifecycle
 
-Find information about the model lifecycle under [@sugoi\core documentation](http://www.sugoijs.com/documentation/core/index)
+@sugoi\mongodb module re-export orm lifecycle interfaces.
+
+Find information about the model lifecycle under [@sugoi\orm documentation](http://www.sugoijs.com/documentation/orm/index)
 
 ## Documentation
 
