@@ -1,7 +1,7 @@
 {
   "name": "@sugoi/mongodb",
-  "version": "1.2.3",
-  "description": "Sugoi mongoDB package",
+  "version": "2.0.0",
+  "description": "SugoiJS mongoDB",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -14,8 +14,11 @@
   },
   "keywords": [
     "@sugoi",
+    "@sugoijs",
     "sugoi",
+    "sugoijs",
     "mongoDB",
+    "schema",
     "orm"
   ],
   "homepage": "sugoijs.com",
@@ -25,11 +28,11 @@
   "author": "Orel Balilti",
   "license": "MIT",
   "dependencies": {
-    "@sugoi/core": "1.2.4",
+    "@sugoi/core": "2.0.0",
+    "@sugoi/orm": "2.0.0",
     "mongodb": "^3.0.10"
   },
   "devDependencies": {
-    "@types/mongodb": "^3.0.19",
-    "typescript": "^2.7.3"
+    "@types/mongodb": "^3.0.19"
   }
 }

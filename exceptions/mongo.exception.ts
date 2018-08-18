@@ -1,8 +1,3 @@
-import {SugoiError} from "@sugoi/core";
+import {GenericException} from "@sugoi/core";
 
-export class SugoiMongoError extends SugoiError {
-
-    constructor(message: string, code: number) {
-        super(message, code);
-    }
-}
+export class SugoiMongoError extends GenericException {}

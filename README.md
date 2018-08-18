@@ -4,16 +4,16 @@
 
 
 ## Introduction
-Sugoi is a minimal modular framework,
+SugoiJS™ is a minimal modular framework.
 
-which gives you the ability to use only what you need, fast.
+SugoiJS™ gives you the ability to use only what you need and do it fast.
 
-As all of the "Sugoi" modules, this module is stand alone and can act without other Sugoi modules.
+this is a standalone module that can be functional on its own (as all of the SugoiJS™ modules).
 
 
-Sugoi mongoDB package provide ORM solution for mongoDB.
+Sugoi mongoDB package provides ORM solutions for mongoDB.
 
-This package relays on the Sugoi core ORM infrastructure using the ConnectableModel abstract class.
+This package relays on Sugoi\ORM infrastructure using the ConnectableModel abstract class.
 
 ## Installation
 
@@ -21,9 +21,9 @@ This package relays on the Sugoi core ORM infrastructure using the ConnectableMo
 
 ### Bootstrapping
 
-Bootstrapping done by one line only:
+Bootstrapping done by only one line:
 
-> MongoModel.setConnection(configuration:IConnectionConfig,connectionName:string = "default)
+    MongoModel.setConnection(configuration:IConnectionConfig,connectionName:string = "default")
 
 The connectionName is used for multiple connection
 
@@ -43,9 +43,9 @@ Example:
 
 ### Create Model
 
-For creating a model all you need is to extend the MongoModel class and set your properties
+to create a model, all you need is to extend the MongoModel class and set your properties.
 
-just like that:
+Just like that:
 
     export class Message extends MongoModel {
         public userId:string;
@@ -58,9 +58,9 @@ just like that:
         }
     }
 
-By default the collection name is the class name with case sensitive.
+By default the collection name is the class name (case sensitive).
 
-For override the collection name you can just set the collectionName property
+For override the collection name, set the collectionName property:
 
     export class Message extends MongoModel {
             public userId:string;
@@ -77,11 +77,11 @@ For override the collection name you can just set the collectionName property
 ##### Using connections
 
 For using different connection for each model all you need to do
-
 is override the connnectionName with your connection name
-export class Message extends MongoModel {
-            public userId:string;
-            public body:string;
+
+    export class Message extends MongoModel {
+                public userId:string;
+                public body:string;
 
         constructor(userId:string,body:string){
             super();
@@ -94,7 +94,7 @@ export class Message extends MongoModel {
 
 ### Model methods
 
-The model as few main methods:
+The model has some main methods:
 
 ##### Query
     static find<T>(query?: any): Observable<Array<T>>;
@@ -110,7 +110,7 @@ The model as few main methods:
 
 ### Model lifecycle
 
-You can find information about the model lifecycle under [@sugoi\core documentation](http://www.sugoijs.com/documentation/core/index)
+Find information about the model lifecycle under [@sugoi\core documentation](http://www.sugoijs.com/documentation/core/index)
 
 ## Documentation
 

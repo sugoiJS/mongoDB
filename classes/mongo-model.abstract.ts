@@ -1,6 +1,6 @@
 import {Collection, Db, MongoClient, MongoClientOptions, ObjectID} from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
-import {ConnectableModel, SugoiModelException} from "@sugoi/core";
+import {ConnectableModel, SugoiModelException} from "@sugoi/orm";
 
 export abstract class MongoModel extends ConnectableModel {
 

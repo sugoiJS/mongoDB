@@ -1,7 +1,8 @@
-import {Connection,injectable} from "@sugoi/core";
-import {IConnectionConfig} from "@sugoi/core/dist/interfaces/connection-config.interface";
+import {Injectable} from "@sugoi/core";
+import {Connection} from "@sugoi/orm";
 
-@injectable()
+
+@Injectable()
 export class MongoConnection extends Connection{
 
 
