@@ -28,9 +28,9 @@
   "author": "Orel Balilti",
   "license": "MIT",
   "dependencies": {
-    "@sugoi/core": "2.0.0",
-    "@sugoi/orm": "2.0.0",
-    "mongodb": "^3.0.10"
+    "@sugoi/core": "2.1.3",
+    "@sugoi/orm": "2.0.3",
+    "mongodb": "^3.1.3"
   },
   "devDependencies": {
     "@types/mongodb": "^3.0.19"

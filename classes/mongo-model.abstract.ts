@@ -1,4 +1,7 @@
-import {Collection, Db, MongoClient, MongoClientOptions, ObjectID} from "mongodb";
+import {
+    Collection, CollectionInsertOneOptions, Db, MongoClient, MongoClientOptions, ObjectID,
+    ReplaceOneOptions
+} from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
 import {ConnectableModel, SugoiModelException} from "@sugoi/orm";
 
@@ -47,6 +50,8 @@ export abstract class MongoModel extends ConnectableModel {
         const that = this;
         if (query.hasOwnProperty("_id")) {
             query._id = MongoModel.getIdObject(query._id);
+        } else if (typeof query === "string") {
+            query = {_id: MongoModel.getIdObject(query)};
         }
         return MongoModel.getCollection(that.connectionName, that.name)
             .then(collection => {
@@ -61,7 +66,7 @@ export abstract class MongoModel extends ConnectableModel {
             });
     }
 
-    public saveEmitter(options): Promise<any> {
+    public saveEmitter(options: CollectionInsertOneOptions): Promise<any> {
         return this.setCollection()
             .then(() => {
                 return new Promise((resolve, reject) => {
@@ -78,20 +83,20 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    public updateEmitter(options): Promise<any> {
+    public updateEmitter(options: ReplaceOneOptions = {upsert: true}): Promise<any> {
         return this.setCollection()
             .then(() => {
-                return new Promise((resolve, reject) => {
-                    this.collection.updateOne({"_id": this.id}, this.formalize(),
-                        options,
-                        (err, value) => {
-                            if (err) {
-                                reject(err);
-                            } else {
-                                resolve(value);
-                            }
-                        });
-                });
+                const formalizeValue = this.formalize();
+                formalizeValue["_id"] = MongoModel.getIdObject(this.id);
+                return this.collection.updateOne({"_id":formalizeValue["_id"] }, {$set: formalizeValue})
+                    .then((res: any) => {
+                        res = res.toJSON();
+                        if (res.ok && res.nModified)
+                            return res;
+                        else
+                            throw new SugoiModelException("Not updated", 5000)
+
+                    });
             })
     }
 
@@ -143,6 +148,9 @@ export abstract class MongoModel extends ConnectableModel {
                 user: connection.user,
                 password: connection.password
             };
+        }
+        if (connection.shouldUseNewParser()) {
+            connectionConfig['useNewUrlParser'] = true;
         }
 
         return MongoClient.connect(connection.getConnectionString(), connectionConfig)

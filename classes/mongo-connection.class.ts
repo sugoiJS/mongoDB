@@ -3,7 +3,8 @@ import {Connection} from "@sugoi/orm";
 
 
 @Injectable()
-export class MongoConnection extends Connection{
+export class MongoConnection extends Connection {
+    private newParser: boolean = false;
 
 
     protected constructor(hostName: string,
@@ -12,14 +13,21 @@ export class MongoConnection extends Connection{
         super(hostName, db, port);
     }
 
+    public useNewParser(useNewParse: boolean) {
+        this.newParser = useNewParse;
+    }
 
-    public disconnect(){
+    public shouldUseNewParser():boolean {
+        return this.newParser;
+    }
+
+    public disconnect() {
         const connection = this.getConnection();
-        if(!connection && connection.client)
+        if (!connection && connection.client)
             return Promise.resolve(null);
-        else{
+        else {
             return connection.client.close(true)
-                .then((disconnectObject)=> {
+                .then((disconnectObject) => {
                     super.disconnect();
                     return disconnectObject;
                 });
@@ -27,7 +35,7 @@ export class MongoConnection extends Connection{
 
     }
 
-    public getConnectionString(){
+    public getConnectionString() {
         let connString = `mongodb://`;
         if (this.user && this.password) {
             connString += `${this.user}:${this.password}@`;
