@@ -4,11 +4,11 @@
 
 
 ## Introduction
-SugoiJS™ is a minimal modular framework.
+SugoiJS is a minimal modular framework.
 
-SugoiJS™ gives you the ability to use only what you need and do it fast.
+SugoiJS gives you the ability to use only what you need and do it fast.
 
-this is a standalone module that can be functional on its own (as all of the SugoiJS™ modules).
+this is a standalone module that can be functional on its own (as all of the SugoiJS modules).
 
 
 Sugoi mongoDB package provides ORM solutions for mongoDB.
