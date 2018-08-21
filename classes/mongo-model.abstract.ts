@@ -88,31 +88,30 @@ export abstract class MongoModel extends ConnectableModel {
             .then(() => {
                 const formalizeValue = this.formalize();
                 formalizeValue["_id"] = MongoModel.getIdObject(this.id);
-                return this.collection.updateOne({"_id":formalizeValue["_id"] }, {$set: formalizeValue})
-                    .then((res: any) => {
-                        res = res.toJSON();
-                        if (res.ok && res.nModified)
-                            return res;
-                        else
-                            throw new SugoiModelException("Not updated", 5000)
+                return this.collection.updateOne({"_id": formalizeValue["_id"]}, {$set: formalizeValue})
+            }).then((res: any) => {
+                res = res.toJSON();
+                if (res.ok && res.nModified)
+                    return res;
+                else
+                    throw new SugoiModelException("Not updated", 5000)
 
-                    });
-            })
+            });
+
     }
 
-    protected removeEmitter(query = {"_id": this.id}): Promise<any> {
+    protected removeEmitter(query = {"_id": MongoModel.getIdObject(this.id)}): Promise<any> {
         return this.setCollection().then(() => {
-            return new Promise((resolve, reject) => {
-                this.collection.deleteOne(query,
-                    (err, value) => {
-                        if (err) {
-                            reject(err);
-                        } else {
-                            resolve(value);
-                        }
-                    });
-            });
+            return this.collection.deleteOne(query)
+        }).then((res: any) => {
+            res = res.toJSON();
+            if (res.ok && res.n)
+                return res;
+            else
+                throw new SugoiModelException("Not removed", 5000)
+
         });
+
     }
 
     protected formalize() {
