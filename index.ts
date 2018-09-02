@@ -5,5 +5,5 @@ export {MongoConnection} from "./classes/mongo-connection.class";
 
 export {MongoModel} from "./classes/mongo-model.abstract";
 
-export {IBeforeValidate,IValidate,IAfterSave,IAfterUpdate,IBeforeSave,IBeforeUpdate} from "@sugoi/orm";
+export {IBeforeValidate,IValidate,IAfterSave,IAfterUpdate,IBeforeSave,IBeforeUpdate,Primary,ModelName,getPrimaryKey} from "@sugoi/orm";
 

@@ -1,17 +1,25 @@
 import {
-    Collection, CollectionInsertOneOptions, Db, MongoClient, MongoClientOptions, ObjectID,
-    ReplaceOneOptions
+    Collection,
+    CollectionInsertOneOptions,
+    CommonOptions,
+    Db,
+    MongoClient,
+    ObjectID,
+    ReplaceOneOptions,
+    FilterQuery
 } from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
-import {ConnectableModel, SugoiModelException} from "@sugoi/orm";
+import {ConnectableModel, getPrimaryKey, Primary, SugoiModelException} from "@sugoi/orm";
+import {QueryOptions} from "@sugoi/orm";
 
 export abstract class MongoModel extends ConnectableModel {
 
     protected client: MongoClient;
 
-    protected collection: Collection;
-
+    @Primary()
     protected _id: ObjectID;
+
+    protected static collection: Collection;
 
     protected static ConnectionType = MongoConnection;
 
@@ -20,7 +28,7 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    public static getIdObject(id: string) {
+    public static getIdObject(id: string | number) {
         return new ObjectID(id);
     }
 
@@ -34,9 +42,9 @@ export abstract class MongoModel extends ConnectableModel {
         return this._id.toString();
     }
 
-    protected async setCollection() {
+    protected static async setCollection() {
         if (this.collection) return Promise.resolve(this.collection);
-        this.collection = await MongoModel.getCollection(this.constructor['connectionName'], this.collectionName);
+        this.collection = await MongoModel.getCollection(this.constructor['connectionName'], this.getCollectionName());
     }
 
 
@@ -46,16 +54,15 @@ export abstract class MongoModel extends ConnectableModel {
             : Promise.resolve(null)
     }
 
-    protected static findEmitter(query: any, options: MongoClientOptions = {}): Promise<any> {
-        const that = this;
-        if (query.hasOwnProperty("_id")) {
-            query._id = MongoModel.getIdObject(query._id);
-        } else if (typeof query === "string") {
-            query = {_id: MongoModel.getIdObject(query)};
+    protected static findEmitter(query: FilterQuery<any>, options: QueryOptions = QueryOptions.builder()): Promise<any> {
+        const id = this.getIdFromQuery(query);
+        if(id){
+            Object.assign(query, {_id:MongoModel.getIdObject(id)});
         }
-        return MongoModel.getCollection(that.connectionName, that.name)
+        return MongoModel.getCollection(this.connectionName, this.getCollectionName())
             .then(collection => {
                 return collection.find(query)
+                    .limit(options.limit || 0)
                     .toArray()
                     .then((res) => {
                         if (res.length === 0) {
@@ -67,28 +74,24 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
     public saveEmitter(options: CollectionInsertOneOptions): Promise<any> {
-        return this.setCollection()
+        return (<any>this).constructor.setCollection()
             .then(() => {
-                return new Promise((resolve, reject) => {
-                    this.collection.insertOne(this.formalize(), options, (err, value) => {
-                        if (err) {
-                            console.error(err);
-                            reject(err);
-                        } else {
-                            resolve(value.ops[0])
-                        }
-                    });
-                })
+                return (<any>this).constructor.collection.insertOne(this.formalize(), options)
+                    .then((value) => {
+                        return value.ops[0];
+                    })
             });
     }
 
 
     public updateEmitter(options: ReplaceOneOptions = {upsert: true}): Promise<any> {
-        return this.setCollection()
+        return (<any>this).constructor.setCollection()
             .then(() => {
                 const formalizeValue = this.formalize();
-                formalizeValue["_id"] = MongoModel.getIdObject(this.id);
-                return this.collection.updateOne({"_id": formalizeValue["_id"]}, {$set: formalizeValue})
+                const primaryKey = getPrimaryKey(this);
+                delete formalizeValue[primaryKey];
+                const query = {[primaryKey]: MongoModel.getIdObject(this[primaryKey])};
+                return (<any>this).constructor.collection.updateOne(query, {$set: formalizeValue}, options)
             }).then((res: any) => {
                 res = res.toJSON();
                 if (res.ok && res.nModified)
@@ -100,9 +103,15 @@ export abstract class MongoModel extends ConnectableModel {
 
     }
 
-    protected removeEmitter(query = {"_id": MongoModel.getIdObject(this.id)}): Promise<any> {
+    protected static removeEmitter(query?,options?:QueryOptions & CommonOptions): Promise<any> {
+        const id = this.getIdFromQuery(query);
+        if(id){
+            Object.assign(query, {_id:MongoModel.getIdObject(id)});
+        }
         return this.setCollection().then(() => {
-            return this.collection.deleteOne(query)
+            return options && options.limit == 1
+                ? this.collection.deleteOne(query,options)
+                : this.collection.deleteMany(query,options);
         }).then((res: any) => {
             res = res.toJSON();
             if (res.ok && res.n)
@@ -127,7 +136,7 @@ export abstract class MongoModel extends ConnectableModel {
 
     public toJSON() {
         const temp = Object.assign({}, this);
-        temp.id = this.getMongoId();
+        temp["id"] = this.getMongoId();
         delete temp['collection'];
         delete temp['_id'];
         return temp;

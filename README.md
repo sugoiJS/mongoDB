@@ -107,12 +107,14 @@ The model has some main methods:
 ##### Remove
     remove<T>(): Observable<T>;
 
+Find information about the model interface on [@sugoi\orm documentation](http://www.sugoijs.com/documentation/orm/index)
+
 
 ### Model lifecycle
 
 @sugoi\mongodb module re-export orm lifecycle interfaces.
 
-Find information about the model lifecycle under [@sugoi\orm documentation](http://www.sugoijs.com/documentation/orm/index)
+Find information about the model lifecycle on [@sugoi\orm documentation](http://www.sugoijs.com/documentation/orm/index)
 
 ## Documentation
 
