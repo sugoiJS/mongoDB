@@ -60,8 +60,9 @@ Just like that:
 
 By default the collection name is the class name (case sensitive).
 
-For override the collection name, set the collectionName property:
+For override the collection name, use the @ModelName decorator:
 
+    @ModelName("AppMessage")
     export class Message extends MongoModel {
             public userId:string;
             public body:string;
@@ -70,15 +71,16 @@ For override the collection name, set the collectionName property:
             super();
             this.userId = userId;
             this.body = body;
-            this.collectionName = "my-app-message";
         }
     }
 
 ##### Using connections
 
-For using different connection for each model all you need to do
-is override the connnectionName with your connection name
+For using different connection for model you able to either use all you need to use
+`setConnectionName` static method or `ConnectionName` decorator.
 
+    @ModelName("AppMessage")
+    @ConnectionName("appDB")
     export class Message extends MongoModel {
                 public userId:string;
                 public body:string;
@@ -87,25 +89,29 @@ is override the connnectionName with your connection name
             super();
             this.userId = userId;
             this.body = body;
-            this.collectionName = "my-app-message";
-            this.connectionName = "adminDB";
+            this.constructor.setConnectionName("adminDB");
         }
     }
 
 ### Model methods
 
-The model has some main methods:
+Some of the model main methods:
 
-##### Query
-    static find<T>(query?: any): Observable<Array<T>>;
-    static findOne<T>(query?: any): Observable<T>;
+#### Query
 
-##### Upsert
-    save<T>(options: CollectionInsertOneOptions): Observable<T>;
-    update(options?: ReplaceOneOptions): Observable<any>;
+> static find<T=any>(query?: any): Promise<Array<T>>;
 
-##### Remove
-    remove<T>(): Observable<T>;
+> static findOne<T=any>(query?: any): Promise<T>;
+
+#### Upsert
+
+> save<T=any>(options: CollectionInsertOneOptions): Promise<T>;
+
+> update<T=any>(options?: ReplaceOneOptions): Promise<T>;
+
+#### Remove
+
+> remove<T=any>(): Promise<T>;
 
 Find information about the model interface on [@sugoi\orm documentation](http://www.sugoijs.com/documentation/orm/index)
 
