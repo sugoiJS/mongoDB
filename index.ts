@@ -14,6 +14,7 @@ export {
     Primary,
     ConnectionName,
     ModelName,
-    getPrimaryKey
+    getPrimaryKey,
+    QueryOptions
 } from "@sugoi/orm";
 
