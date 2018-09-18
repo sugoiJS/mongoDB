@@ -16,6 +16,7 @@ export {
     ModelName,
     getPrimaryKey,
     QueryOptions,
-    SortItem
+    SortItem,
+    SortOptions
 } from "@sugoi/orm";
 
