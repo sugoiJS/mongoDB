@@ -60,6 +60,8 @@ export abstract class MongoModel extends ConnectableModel {
         const sortObject = {};
         if (MongoModel.checkForId(id)) {
             Object.assign(query, {_id: MongoModel.getIdObject(id)});
+        }else if(id){
+            Object.assign(query, {_id: id});
         }
         return this.getCollection(this.connectionName, this.getCollectionName())
             .then(collection => {
@@ -117,6 +119,8 @@ export abstract class MongoModel extends ConnectableModel {
         const id = this.getIdFromQuery(query);
         if (MongoModel.checkForId(id)) {
             Object.assign(query, {_id: MongoModel.getIdObject(id)});
+        }else if(id){
+            Object.assign(query, {_id: id});
         }
         return this.setCollection().then(() => {
             return options && options.limit == 1
