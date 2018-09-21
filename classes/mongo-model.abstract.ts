@@ -58,7 +58,7 @@ export abstract class MongoModel extends ConnectableModel {
     protected static findEmitter(query: FilterQuery<any>, options: QueryOptions = QueryOptions.builder()): Promise<any> {
         const id = this.getIdFromQuery(query);
         const sortObject = {};
-        if (id) {
+        if (MongoModel.checkForId(id)) {
             Object.assign(query, {_id: MongoModel.getIdObject(id)});
         }
         return this.getCollection(this.connectionName, this.getCollectionName())
@@ -67,7 +67,7 @@ export abstract class MongoModel extends ConnectableModel {
                     .limit(options.getLimit() || 0)
                     .skip(options.getOffset() || 0);
                 if (options.getSortOption() && options.getSortOption().length > 0) {
-                    options.getSortOption().forEach(sortOption=>{
+                    options.getSortOption().forEach(sortOption => {
                         sortObject[sortOption.field] = SortOptionsMongo[sortOption.sortOption];
                     });
                     queryBuilder = queryBuilder.sort(sortObject);
@@ -115,7 +115,7 @@ export abstract class MongoModel extends ConnectableModel {
 
     protected static removeEmitter(query?, options?: QueryOptions & CommonOptions): Promise<any> {
         const id = this.getIdFromQuery(query);
-        if (id) {
+        if (MongoModel.checkForId(id)) {
             Object.assign(query, {_id: MongoModel.getIdObject(id)});
         }
         return this.setCollection().then(() => {
@@ -146,7 +146,7 @@ export abstract class MongoModel extends ConnectableModel {
 
     public toJSON() {
         const temp = Object.assign({}, this);
-        temp["id"] = this.getMongoId();
+        temp["id"] = this._id ? this.getMongoId(): null;
         delete temp['collection'];
         delete temp['_id'];
         return temp;
@@ -155,11 +155,11 @@ export abstract class MongoModel extends ConnectableModel {
     public static async updateById<T extends ModelAbstract>(id: string, data: T, options?: Partial<QueryOptions | any>): Promise<T> {
         id = this.getIdObject(id) as any;
         data['_id'] = id;
-        return super.updateById(id,data,options);
+        return super.updateById(id, data, options);
     }
 
     public static clone(classIns: any, data: any): any {
-        if(data._id)
+        if (data._id)
             data._id = data._id.toString();
         return super.clone(classIns, data);
     }
@@ -186,5 +186,9 @@ export abstract class MongoModel extends ConnectableModel {
                     client
                 }
             });
+    }
+
+    private static checkForId(id){
+        return id && id.constructor &&  ["string", "number"].indexOf(id.constructor.name) > -1
     }
 }
