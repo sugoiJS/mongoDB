@@ -189,6 +189,6 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
     private static checkForId(id){
-        return id && id.constructor &&  ["string", "number"].indexOf(id.constructor.name) > -1
+        return id && id.constructor &&  ["string", "number","objectid"].indexOf(id.constructor.name.toLowerCase()) > -1
     }
 }
