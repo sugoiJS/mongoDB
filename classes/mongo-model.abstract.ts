@@ -159,7 +159,8 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
     public static clone(classIns: any, data: any): any {
-        data._id = data._id.toString();
+        if(data._id)
+            data._id = data._id.toString();
         return super.clone(classIns, data);
     }
 
