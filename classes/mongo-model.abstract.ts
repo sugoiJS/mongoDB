@@ -167,7 +167,6 @@ export abstract class MongoModel extends ConnectableModel {
             data._id = data._id.toString();
         return super.clone(classIns, data);
     }
-
     public static connectEmitter(connection: MongoConnection): Promise<{ dbInstance: Db, client: MongoClient }> {
         const connectionConfig = {
             authSource: connection.authDB || connection.db
