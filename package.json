@@ -22,6 +22,14 @@
     "orm"
   ],
   "homepage": "sugoijs.com",
+  "bugs": {
+    "url": "https://github.com/sugoiJS/mongoDB/issues",
+    "email": "oba.sugoi@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sugoiJS/mongoDB"
+  },
   "files": [
     "dist/**/*"
   ],
