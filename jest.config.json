@@ -1,0 +1,29 @@
+{
+    "clearMocks": true,
+
+    "coverageDirectory": "coverage",
+
+    "transform": {
+        "^.+\\.tsx?$": "ts-jest"
+    },
+
+    "moduleFileExtensions": [
+        "js",
+        "ts",
+        "json",
+        "jsx",
+        "node"
+    ],
+
+
+    "testMatch": [
+        "**/__tests__/**/?(*.)+(spec|test).ts?(x)",
+        "**/__tests__/?(*.)+(spec|test).ts?(x)",
+        "**/?(*.)+(spec|test).ts?(x)"
+    ],
+
+    "testPathIgnorePatterns": [
+        "\\\\node_modules\\\\"
+    ]
+
+}

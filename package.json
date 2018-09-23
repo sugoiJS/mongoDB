@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config=jest.config.js",
     "docs": "..\\node_modules\\.bin\\typedoc --out ..\\dist\\docs\\mongoDB --json dist\\docs\\main.json --ignoreCompilerErrors --excludeNotExported --excludeProtected --excludePrivate --readme .\\README.md --mode file --hideGenerator --gitRevision '1.0.0' --externalPattern node_modules/**/* --excludeExternals",
     "update:patch": " npm run build && npm version patch && npm publish && npm run docs",
     "update:minor": " npm run build && npm version minor && npm publish && npm run docs",
@@ -41,6 +41,14 @@
     "mongodb": "^3.1.3"
   },
   "devDependencies": {
-    "@types/mongodb": "^3.0.19"
+    "@types/jest": "^23.3.2",
+    "@types/mongodb": "^3.0.19",
+    "jest": "^23.6.0",
+    "mongodb-memory-server": "^2.2.0",
+    "ts-jest": "^23.10.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage"
   }
 }

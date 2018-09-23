@@ -1,8 +1,6 @@
-import {Injectable} from "@sugoi/core";
 import {Connection} from "@sugoi/orm";
 
 
-@Injectable()
 export class MongoConnection extends Connection {
     private newParser: boolean = false;
 
