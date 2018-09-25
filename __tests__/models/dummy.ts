@@ -23,6 +23,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate,IAfter
     }
 
     beforeUpdate(): Promise<any> | void {
+        delete this.isUpdate;
         this.lastUpdated = "today";
     }
 
@@ -31,6 +32,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate,IAfter
     }
 
     beforeSave(): Promise<any> | void {
+        delete this.isUpdate;
         this.lastSaved = "today"
     }
 

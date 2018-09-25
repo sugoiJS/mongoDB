@@ -104,11 +104,12 @@ describe("Model update test suit", () => {
 
     test("update by id - validation pass", async () => {
         return await  Dummy.updateById<any>(MockId, {name: "12", isUpdate: true})
-            .then(res=>res.ok ? Dummy.findById(MockId) : null)
+            .then(res => res.ok ? Dummy.findById(MockId) : null)
             .then(res => {
                 expect(res).not.toBe(null);
                 expect(res.name).toBe("u_12");
                 expect(res.lastUpdated).toBe("today");
+                return null
             })
     });
 
@@ -120,4 +121,20 @@ describe("Model update test suit", () => {
             })
     });
 
-})
+    test("update after find ", async () => {
+        let dummy;
+        return await Dummy.findById(MockId)
+            .then(_dummy => {
+                dummy = _dummy;
+                dummy.name = "MyTest";
+                return dummy.update().then(_=>Dummy.findById(dummy.id));
+            })
+            .then((dummyRes: Dummy) => {
+                expect(dummyRes.name).toBe("MyTest");
+                expect(dummyRes.lastUpdated).toBe("today");
+                expect(dummy.updated).toBe(true);
+                return null;
+            })
+    });
+
+});
