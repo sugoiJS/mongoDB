@@ -1,4 +1,4 @@
-import {MongoModel,ConnectionName, IValidate} from "../../dist/index";
+import {MongoModel,ConnectionName, IValidate} from "../../index";
 
 @ConnectionName("TESTING")
 export class Dummy extends MongoModel implements IValidate{

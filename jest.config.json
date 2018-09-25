@@ -17,9 +17,9 @@
 
 
     "testMatch": [
-        "**/__tests__/**/?(*.)+(spec|test).ts?(x)",
-        "**/__tests__/?(*.)+(spec|test).ts?(x)",
-        "**/?(*.)+(spec|test).ts?(x)"
+        "**/dist/__tests__/**/?(*.)+(spec|test).js?(x)",
+        "**/dist/__tests__/?(*.)+(spec|test).js?(x)",
+        "**/dist/?(*.)+(spec|test).js?(x)"
     ],
 
     "testPathIgnorePatterns": [
