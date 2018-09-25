@@ -39,6 +39,11 @@ expect.extend({
     }
 });
 let mongod;
+let MockId;
+const validationException = {type: SugoiModelException, message: "INVALID", code: 4000};
+const notFoundException = {type: SugoiModelException, message: "Not Found", code: 404};
+const notUpdatedException = {type: SugoiModelException, message: "Not updated", code: 5000};
+
 beforeAll(() => {
     const config: IConnectionConfig = {
         port: 27017,
@@ -47,7 +52,7 @@ beforeAll(() => {
         db: "SUGOIJS-TEST",
         user: null,
         password: null,
-        newParser:true
+        newParser: true
     };
     mongod = new MongodbMemoryServer({
         instance: {
@@ -62,20 +67,22 @@ beforeAll(() => {
 
 describe("Model save test suit", () => {
 
-
-    test("model should not be saved", async () => {
+    test("model should not be saved validation fail", async () => {
         return await Dummy.builder("123").save()
             .catch(err => {
-                (<any>expect(err)).toBeExceptionOf({type: SugoiModelException, message: "INVALID", code: 4000});
+                (<any>expect(err)).toBeExceptionOf(validationException);
                 return true;
             });
     });
 
-    test("model should be saved", async () => {
-        return await Dummy.builder("Sugoi")
-            .save()
-            .then(saved => {
+    test("model should be saved with lifecycle hooks apply", async () => {
+        const dummy = Dummy.builder("Sugoi");
+        return await dummy.save()
+            .then((saved) => {
+                MockId = saved.id.toString();
                 expect(saved.name).toBe("Sugoi");
+                expect(saved.lastSaved).toBe("today");
+                expect(dummy.saved).toBe(saved.id);
                 return true
             })
             .catch(err => {
@@ -86,6 +93,31 @@ describe("Model save test suit", () => {
     });
 })
 
-describe("Model update test suit",()=>{
+describe("Model update test suit", () => {
+    test("update by id - validation fail", async () => {
+        return await Dummy.updateById<any>(MockId, {name: "12"})
+            .catch(err => {
+                (<any>expect(err)).toBeExceptionOf(validationException);
+                return true;
+            });
+    });
+
+    test("update by id - validation pass", async () => {
+        return await  Dummy.updateById<any>(MockId, {name: "12", isUpdate: true})
+            .then(res=>res.ok ? Dummy.findById(MockId) : null)
+            .then(res => {
+                expect(res).not.toBe(null);
+                expect(res.name).toBe("u_12");
+                expect(res.lastUpdated).toBe("today");
+            })
+    });
+
+    test("update - validation invalid Id", async () => {
+        return await Dummy.updateById<any>("5b8c520c875d534870ab3417", {name: "12", isUpdate: true})
+            .catch(err => {
+                (<any>expect(err)).toBeExceptionOf(notUpdatedException);
+                return err;
+            })
+    });
 
 })

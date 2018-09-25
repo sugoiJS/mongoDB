@@ -12,6 +12,7 @@ import {MongoConnection} from "./mongo-connection.class";
 import {ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException} from "@sugoi/orm";
 import {QueryOptions} from "@sugoi/orm";
 import {SortOptionsMongo} from "../constants/sort-options-mongo.constant";
+import any = jasmine.any;
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -156,9 +157,9 @@ export abstract class MongoModel extends ConnectableModel {
         return temp;
     }
 
-    public static async updateById<T extends ModelAbstract>(id: string, data: T, options?: Partial<QueryOptions | any>): Promise<T> {
+    public static async updateById<T extends typeof ModelAbstract=any>(id: string, data: Partial<T>, options?: Partial<QueryOptions | any>): Promise<T> {
         id = this.getIdObject(id) as any;
-        data['_id'] = id;
+        (<any>data)['_id'] = id;
         return super.updateById(id, data, options);
     }
 

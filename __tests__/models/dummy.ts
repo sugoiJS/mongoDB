@@ -1,16 +1,49 @@
-import {MongoModel,ConnectionName, IValidate} from "../../index";
+import {MongoModel, ConnectionName, IValidate} from "../../index";
+import {IAfterSave, IAfterUpdate, IBeforeSave, IBeforeUpdate, IBeforeValidate} from "@sugoi/orm";
 
 @ConnectionName("TESTING")
-export class Dummy extends MongoModel implements IValidate{
-    constructor(public name:string){
+export class Dummy extends MongoModel implements IValidate, IBeforeUpdate,IAfterUpdate, IAfterSave, IBeforeSave, IBeforeValidate {
+    public get id():any{
+        return this._id;
+    }
+    public set id(id){
+        this._id = id;
+    }
+    public lastUpdated;
+    public lastSaved;
+    public saved: string;
+    public updated: boolean;
+    public isUpdate: boolean;
+    constructor(public name: string) {
         super();
     }
 
+    beforeValidate(): Promise<any> | void {
+        this.name = this.isUpdate ? "u_"+this.name : this.name ;
+    }
+
+    beforeUpdate(): Promise<any> | void {
+        this.lastUpdated = "today";
+    }
+
+    afterUpdate(updateResponse?: any): Promise<any> | void {
+        this.updated = this.lastUpdated === "today";
+    }
+
+    beforeSave(): Promise<any> | void {
+        this.lastSaved = "today"
+    }
+
+    afterSave(saveResponse?: any): Promise<any> | void {
+        this.saved = saveResponse.id;
+    }
+
     validate(): Promise<string | boolean> {
+        console.log(this.name);
         return Promise.resolve(isNaN(parseInt(<string>this.name)));
     }
 
-    static builder(name){
+    static builder(name) {
         return new Dummy(name);
     }
 }
