@@ -1,25 +1,38 @@
-import {MongoModel, ConnectionName, IValidate} from "../../index";
-import {IAfterSave, IAfterUpdate, IBeforeSave, IBeforeUpdate, IBeforeValidate} from "@sugoi/orm";
+import {
+    IAfterSave,
+    IAfterUpdate,
+    IBeforeSave,
+    IBeforeUpdate,
+    IBeforeValidate,
+    MongoModel,
+    ConnectionName,
+    IValidate
+} from "../../index";
+
 
 @ConnectionName("TESTING")
-export class Dummy extends MongoModel implements IValidate, IBeforeUpdate,IAfterUpdate, IAfterSave, IBeforeSave, IBeforeValidate {
-    public get id():any{
+export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfterUpdate, IAfterSave, IBeforeSave, IBeforeValidate {
+    public get id(): any {
         return this._id;
     }
-    public set id(id){
+
+    public set id(id) {
         this._id = id;
     }
+
     public lastUpdated;
     public lastSaved;
+    public lastSavedTime;
     public saved: string;
     public updated: boolean;
     public isUpdate: boolean;
+
     constructor(public name: string) {
         super();
     }
 
     beforeValidate(): Promise<any> | void {
-        this.name = this.isUpdate ? "u_"+this.name : this.name ;
+        this.name = this.isUpdate ? "u_" + this.name : this.name;
     }
 
     beforeUpdate(): Promise<any> | void {
@@ -34,6 +47,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate,IAfter
     beforeSave(): Promise<any> | void {
         delete this.isUpdate;
         this.lastSaved = "today"
+        this.lastSavedTime = new Date().getTime()
     }
 
     afterSave(saveResponse?: any): Promise<any> | void {
@@ -41,7 +55,6 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate,IAfter
     }
 
     validate(): Promise<string | boolean> {
-        console.log(this.name);
         return Promise.resolve(isNaN(parseInt(<string>this.name)));
     }
 

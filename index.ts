@@ -21,6 +21,7 @@ export {
     getPrimaryKey,
     QueryOptions,
     SortItem,
-    SortOptions
+    SortOptions,
+    SugoiModelException
 } from "@sugoi/orm";
 

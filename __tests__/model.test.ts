@@ -1,7 +1,8 @@
-import {IConnectionConfig, MongoModel} from "../index";
+import {QueryOptions, SugoiModelException, IConnectionConfig, MongoModel} from "../index";
 import {Dummy} from "./models/dummy";
 import MongodbMemoryServer from 'mongodb-memory-server';
-import {SugoiModelException} from "@sugoi/orm";
+import {SortItem, SortOptions} from "@sugoi/orm";
+
 
 expect.extend({
     toBeExceptionOf(received, expected: { type: any, message: string, code: number }) {
@@ -65,6 +66,7 @@ beforeAll(() => {
     MongoModel.setConnection(config, "TESTING")
 });
 
+//Create test suit
 describe("Model save test suit", () => {
 
     test("model should not be saved validation fail", async () => {
@@ -85,21 +87,42 @@ describe("Model save test suit", () => {
                 expect(dummy.saved).toBe(saved.id);
                 return true
             })
-            .catch(err => {
-                console.debug(err);
-                expect(true).toBeFalsy();
-                return false;
-            })
+            .catch(err => expect(true).toBeFalsy())
     });
-})
+});
 
+
+//Read test suit
+describe("Model read test suit", () => {
+    const recAmount = 10;
+    const recNamePrefix = "read_name_";
+    async function setResources(){
+        const p = [];
+        for (let i = 0; i < recAmount; i++) {
+            p.push(
+                Dummy.builder(`${recNamePrefix}${i}`).save()
+            );
+        }
+        return await Promise.all(p);
+    }
+
+    test("Find all - check amount", async () => {
+        await setResources();
+        return await Dummy.findAll({name: recNamePrefix}, QueryOptions
+            .builder()
+            .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime")))
+            .then(res => {
+                return expect(res.length).toBe(recAmount);
+            })
+    })
+
+});
+
+//Update test suit
 describe("Model update test suit", () => {
     test("update by id - validation fail", async () => {
-        return await Dummy.updateById<any>(MockId, {name: "12"})
-            .catch(err => {
-                (<any>expect(err)).toBeExceptionOf(validationException);
-                return true;
-            });
+        return await Dummy.updateById<Dummy>(MockId, {name: "12"})
+            .catch(err => (<any>expect(err)).toBeExceptionOf(validationException));
     });
 
     test("update by id - validation pass", async () => {
@@ -115,10 +138,7 @@ describe("Model update test suit", () => {
 
     test("update - validation invalid Id", async () => {
         return await Dummy.updateById<any>("5b8c520c875d534870ab3417", {name: "12", isUpdate: true})
-            .catch(err => {
-                (<any>expect(err)).toBeExceptionOf(notUpdatedException);
-                return err;
-            })
+            .catch(err => (<any>expect(err)).toBeExceptionOf(notUpdatedException))
     });
 
     test("update after find ", async () => {
@@ -127,7 +147,7 @@ describe("Model update test suit", () => {
             .then(_dummy => {
                 dummy = _dummy;
                 dummy.name = "MyTest";
-                return dummy.update().then(_=>Dummy.findById(dummy.id));
+                return dummy.update().then(_ => Dummy.findById(dummy.id));
             })
             .then((dummyRes: Dummy) => {
                 expect(dummyRes.name).toBe("MyTest");
@@ -135,6 +155,31 @@ describe("Model update test suit", () => {
                 expect(dummy.updated).toBe(true);
                 return null;
             })
+    });
+
+    // test("update all",async ()=>{})
+
+});
+
+describe("Model extra functions", () => {
+    test("Clone no Id", async () => {
+        const dummy = Dummy.clone({name: "t"});
+        expect(dummy.constructor.name).toBe("Dummy");
+        return await dummy.save().then(res => {
+            expect(res.id).not.toBeFalsy()
+        });
+    });
+
+    test("Clone with Id", async () => {
+        const name = "test_clone";
+        const dummy = Dummy.clone({name, id: MockId});
+        expect(dummy.constructor.name).toBe("Dummy");
+        return await dummy.update()
+            .then(res => Dummy.findById(MockId))
+            .then(res => {
+                expect(res.id).not.toBeFalsy();
+                expect(res.name).toBe(name);
+            });
     });
 
 });

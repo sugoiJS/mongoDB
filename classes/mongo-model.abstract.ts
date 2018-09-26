@@ -61,7 +61,7 @@ export abstract class MongoModel extends ConnectableModel {
         const sortObject = {};
         if (MongoModel.checkForId(id)) {
             Object.assign(query, {_id: MongoModel.getIdObject(id)});
-        }else if(id){
+        } else if (id) {
             Object.assign(query, {_id: id});
         }
         return this.getCollection(this.connectionName, this.getCollectionName())
@@ -120,7 +120,7 @@ export abstract class MongoModel extends ConnectableModel {
         const id = this.getIdFromQuery(query);
         if (MongoModel.checkForId(id)) {
             Object.assign(query, {_id: MongoModel.getIdObject(id)});
-        }else if(id){
+        } else if (id) {
             Object.assign(query, {_id: id});
         }
         return this.setCollection().then(() => {
@@ -151,23 +151,29 @@ export abstract class MongoModel extends ConnectableModel {
 
     public toJSON() {
         const temp = Object.assign({}, this);
-        temp["id"] = this._id ? this.getMongoId(): null;
+        temp["id"] = this._id ? this.getMongoId() : null;
         delete temp['collection'];
         delete temp['_id'];
         return temp;
     }
 
-    public static async updateById<T extends typeof ModelAbstract=any>(id: string, data: Partial<T>, options?: Partial<QueryOptions | any>): Promise<T> {
+    public static async updateById<T extends ModelAbstract=any>(id: string, data: Partial<T>, options?: Partial<QueryOptions | any>): Promise<T> {
         id = this.getIdObject(id) as any;
         (<any>data)['_id'] = id;
         return super.updateById(id, data, options);
     }
 
-    public static clone(classIns: any, data: any): any {
+    public static clone<T=any>(data: any): any;
+    public static clone<T=any>(classIns: any, data?: any): any {
+        if (arguments.length === 1) {
+            data = classIns;
+            classIns = this;
+        }
         if (data._id)
             data._id = data._id.toString();
         return super.clone(classIns, data);
     }
+
     public static connectEmitter(connection: MongoConnection): Promise<{ dbInstance: Db, client: MongoClient }> {
         const connectionConfig = {
             authSource: connection.authDB || connection.db
@@ -192,7 +198,7 @@ export abstract class MongoModel extends ConnectableModel {
             });
     }
 
-    private static checkForId(id){
-        return id && id.constructor &&  ["string", "number","objectid"].indexOf(id.constructor.name.toLowerCase()) > -1
+    private static checkForId(id) {
+        return id && id.constructor && ["string", "number", "objectid"].indexOf(id.constructor.name.toLowerCase()) > -1
     }
 }
