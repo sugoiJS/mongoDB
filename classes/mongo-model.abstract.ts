@@ -9,10 +9,8 @@ import {
     FilterQuery
 } from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
-import {ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException} from "@sugoi/orm";
-import {QueryOptions} from "@sugoi/orm";
+import {QueryOptions,ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException} from "@sugoi/orm";
 import {SortOptionsMongo} from "../constants/sort-options-mongo.constant";
-import any = jasmine.any;
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -123,18 +121,19 @@ export abstract class MongoModel extends ConnectableModel {
         } else if (id) {
             Object.assign(query, {_id: id});
         }
-        return this.setCollection().then(() => {
-            return options && options.limit == 1
-                ? this.collection.deleteOne(query, options)
-                : this.collection.deleteMany(query, options);
-        }).then((res: any) => {
-            res = res.toJSON();
-            if (res.ok && res.n)
-                return res;
-            else
-                throw new SugoiModelException("Not removed", 5000)
+        return this.setCollection()
+            .then(() => {
+                return options && options.limit == 1
+                    ? this.collection.deleteOne(query, options)
+                    : this.collection.deleteMany(query, options);
+            }).then((res: any) => {
+                res = res.toJSON();
+                if (res.ok && res.n)
+                    return res;
+                else
+                    throw new SugoiModelException("Not removed", 5000)
 
-        });
+            });
 
     }
 
@@ -195,6 +194,10 @@ export abstract class MongoModel extends ConnectableModel {
                     dbInstance: client.db(connection.db),
                     client
                 }
+            })
+            .catch(err=>{
+                console.error(err);
+                throw err;
             });
     }
 

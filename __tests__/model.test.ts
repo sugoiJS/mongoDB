@@ -1,8 +1,6 @@
-import {QueryOptions, SugoiModelException, IConnectionConfig, MongoModel} from "../index";
+import {QueryOptions, SugoiModelException, IConnectionConfig, MongoModel, SortItem, SortOptions} from "../index";
 import {Dummy} from "./models/dummy";
 import MongodbMemoryServer from 'mongodb-memory-server';
-import {SortItem, SortOptions} from "@sugoi/orm";
-
 
 expect.extend({
     toBeExceptionOf(received, expected: { type: any, message: string, code: number }) {
@@ -13,7 +11,7 @@ expect.extend({
         if (!isInstance) {
             return {
                 pass: false,
-                message: () => `expected not of type ${type}`,
+                message: () => `expected ${received.name} not of type ${type.nanme}`,
             }
         }
 
@@ -45,25 +43,53 @@ const validationException = {type: SugoiModelException, message: "INVALID", code
 const notFoundException = {type: SugoiModelException, message: "Not Found", code: 404};
 const notUpdatedException = {type: SugoiModelException, message: "Not updated", code: 5000};
 
-beforeAll(() => {
+const recAmount = 10;
+const recNamePrefix = "read_name_";
+let mock,client;
+
+async function setResources() {
+    const p = [];
+    for (let i = 0; i < recAmount; i++) {
+        p.push(
+            Dummy.builder(`${recNamePrefix}${i}`).save()
+        );
+    }
+    Promise.race(p).then(first => {
+        mock = first;
+    });
+    return await Promise.all(p);
+}
+
+beforeAll(async () => {
     const config: IConnectionConfig = {
         port: 27017,
         protocol: "mongodb://",
         hostName: "127.0.0.1",
         db: "SUGOIJS-TEST",
         user: null,
-        password: null,
-        newParser: true
+        password: null
     };
     mongod = new MongodbMemoryServer({
         instance: {
             port: config.port,
             ip: config.hostName,
-            dbName: config.db,
-            debug: true,
+            dbName: config.db
         }
     });
-    MongoModel.setConnection(config, "TESTING")
+    return await mongod.getConnectionString().then(connString => {
+        console.info(connString);
+    })
+        .then(() => MongoModel.setConnection(config, "TESTING"))
+        .then(connection => {
+            client = connection.client;
+            return setResources()
+        })
+
+});
+afterAll(async () => {
+    console.info("Stopping server");
+    await client.close(true);
+    return await mongod.stop();
 });
 
 //Create test suit
@@ -94,28 +120,48 @@ describe("Model save test suit", () => {
 
 //Read test suit
 describe("Model read test suit", () => {
-    const recAmount = 10;
-    const recNamePrefix = "read_name_";
-    async function setResources(){
-        const p = [];
-        for (let i = 0; i < recAmount; i++) {
-            p.push(
-                Dummy.builder(`${recNamePrefix}${i}`).save()
-            );
-        }
-        return await Promise.all(p);
-    }
+
+    // beforeAll(() => {
+    //     return setResources()
+    // });
 
     test("Find all - check amount", async () => {
-        await setResources();
-        return await Dummy.findAll({name: recNamePrefix}, QueryOptions
+        return Dummy.findAll({name: {$regex: `${recNamePrefix}`}}, QueryOptions
             .builder()
             .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime")))
             .then(res => {
                 return expect(res.length).toBe(recAmount);
             })
-    })
+    });
 
+    test("Find - check amount", async () => {
+        return Dummy.find({name: {$regex: `${recNamePrefix}`}}, QueryOptions
+            .builder()
+            .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime")))
+            .then(res => {
+                return expect(res.length).toBe(recAmount);
+            })
+    });
+
+    test("Find one", async () => {
+        return Dummy.findOne({name: {$regex: `${recNamePrefix}`}}, QueryOptions
+            .builder()
+            .setSortOption(new SortItem(SortOptions.ASC, "lastSavedTime"))
+        )
+            .then(res => {
+                return expect(res).toEqual(mock);
+            })
+    });
+
+    test("Find by Id", async () => {
+        return Dummy.findById(mock.id, QueryOptions
+            .builder()
+            .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime"))
+        )
+            .then(res => {
+                return expect(res).toEqual(mock);
+            })
+    });
 });
 
 //Update test suit
@@ -161,7 +207,58 @@ describe("Model update test suit", () => {
 
 });
 
+//Remove test suit
+describe("Model remove test suit", () => {
+
+    test("remove by id", async () => {
+        return await Dummy.removeById<any>(MockId)
+            .then(res => expect(res.n).toBe(1));
+    });
+
+    test("remove one - invalid Id", async () => {
+        return await Dummy.removeById<any>("5b8c520c875d534870ab3417")
+            .catch(err => {
+                console.error(err);
+                (<any>expect(err)).toBeExceptionOf(notFoundException);
+            })
+    });
+
+    test("remove one - name", async () => {
+        return await Dummy.removeOne<any>(
+            {name: {$regex: recNamePrefix}},
+            QueryOptions.builder().setSortOption(new SortItem(SortOptions.ASC, "lastSavedTime"))
+        )
+            .then(res => expect(res.n).toBe(1))
+    });
+
+    test("remove after find ", async () => {
+        return await Dummy.findOne({name: {$regex: recNamePrefix}},
+            QueryOptions.builder().setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime"))
+        )
+            .then(dummy => dummy.remove())
+            .then(res => expect(res.n).toBe(1))
+
+    });
+
+    test("remove all", async () => {
+        return await Dummy.removeAll({name: {$regex: recNamePrefix}})
+            .then((res: any) => expect(res.n).toBe(recAmount - 2));
+
+    });
+});
+
 describe("Model extra functions", () => {
+    test("Model name", () => {
+        const originalModelName = "dummy";
+        let modelName = originalModelName;
+        expect(Dummy.getModelName()).toBe(modelName);
+        modelName += "_updated";
+        Dummy.setModelName(modelName);
+        expect(Dummy.getModelName()).toBe(modelName);
+        Dummy.setModelName(originalModelName);
+        return;
+    });
+
     test("Clone no Id", async () => {
         const dummy = Dummy.clone({name: "t"});
         expect(dummy.constructor.name).toBe("Dummy");
@@ -172,10 +269,11 @@ describe("Model extra functions", () => {
 
     test("Clone with Id", async () => {
         const name = "test_clone";
-        const dummy = Dummy.clone({name, id: MockId});
+        const d = await Dummy.builder("test").save();
+        const dummy = Dummy.clone({name, id: d.id});
         expect(dummy.constructor.name).toBe("Dummy");
         return await dummy.update()
-            .then(res => Dummy.findById(MockId))
+            .then(res => Dummy.findById(d.id))
             .then(res => {
                 expect(res.id).not.toBeFalsy();
                 expect(res.name).toBe(name);

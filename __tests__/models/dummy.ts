@@ -8,9 +8,11 @@ import {
     ConnectionName,
     IValidate
 } from "../../index";
+import {ModelName} from "@sugoi/orm";
 
 
 @ConnectionName("TESTING")
+@ModelName("dummy")
 export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfterUpdate, IAfterSave, IBeforeSave, IBeforeValidate {
     public get id(): any {
         return this._id;
@@ -46,7 +48,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
 
     beforeSave(): Promise<any> | void {
         delete this.isUpdate;
-        this.lastSaved = "today"
+        this.lastSaved = "today";
         this.lastSavedTime = new Date().getTime()
     }
 
