@@ -49,6 +49,6 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageDirectory": "./coverage"
+    "coverageDirectory": "./dist/coverage"
   }
 }

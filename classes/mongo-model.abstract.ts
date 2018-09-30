@@ -156,7 +156,7 @@ export abstract class MongoModel extends ConnectableModel {
         return temp;
     }
 
-    public static async updateById<T extends ModelAbstract=any>(id: string, data: Partial<T>, options?: Partial<QueryOptions | any>): Promise<T> {
+    public static async updateById<T =any>(id: string, data: any, options?: Partial<QueryOptions | any>): Promise<T> {
         id = this.getIdObject(id) as any;
         (<any>data)['_id'] = id;
         return super.updateById(id, data, options);
