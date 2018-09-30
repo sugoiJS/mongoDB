@@ -6,9 +6,10 @@ import {
     IBeforeValidate,
     MongoModel,
     ConnectionName,
-    IValidate
+    IValidate,
+    ModelName
 } from "../../index";
-import {ModelName} from "@sugoi/orm";
+
 
 
 @ConnectionName("TESTING")
