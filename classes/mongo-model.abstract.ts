@@ -48,7 +48,7 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    public static disconnect(connectionName: string): Promise<any> {
+    public static disconnect(connectionName: string = this.getConnectionName()): Promise<any> {
         return this.connections.has(connectionName)
             ? this.connections.get(connectionName).disconnect()
             : Promise.resolve(null)
@@ -192,7 +192,8 @@ export abstract class MongoModel extends ConnectableModel {
                 client.on("error", () => this.disconnect(connection.connectionName));
                 return {
                     dbInstance: client.db(connection.db),
-                    client
+                    client,
+                    connection
                 }
             })
             .catch(err=>{

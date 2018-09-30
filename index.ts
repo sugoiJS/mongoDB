@@ -1,4 +1,5 @@
 import {IBeforeValidate} from "@sugoi/orm";
+export {ObjectID} from "bson";
 
 export {EXCEPTIONS} from "./constants/exceptions.constant";
 

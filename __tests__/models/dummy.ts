@@ -25,7 +25,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     public lastUpdated;
     public lastSaved;
     public lastSavedTime;
-    public saved: string;
+    public saved: boolean;
     public updated: boolean;
     public isUpdate: boolean;
 
@@ -53,7 +53,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     }
 
     afterSave(saveResponse?: any): Promise<any> | void {
-        this.saved = saveResponse.id;
+        this.saved = true;
     }
 
     validate(): Promise<string | boolean> {

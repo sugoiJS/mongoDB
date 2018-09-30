@@ -1,7 +1,7 @@
 {
     "clearMocks": true,
 
-    "coverageDirectory": "coverage",
+    "coverageDirectory": "dist/coverage",
 
     "transform": {
         "^.+\\.tsx?$": "ts-jest"
@@ -25,5 +25,4 @@
     "testPathIgnorePatterns": [
         "\\\\node_modules\\\\"
     ]
-
 }
