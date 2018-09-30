@@ -23,7 +23,7 @@ This package relays on Sugoi\ORM infrastructure using the ConnectableModel abstr
 
 Under your tsconfig - compilerOptions set:
 
-- `"target": "es5"`
+- `"target": "es2015"`
 
 - `"emitDecoratorMetadata": true`
 
