@@ -40,7 +40,7 @@ You are able to use the config template which was set for the @sugoi/demo applic
       "compilerOptions": {
         "baseUrl": "./src",
         "allowJs": true,
-        "target": "es5",
+        "target": "es2015",
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
