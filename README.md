@@ -3,6 +3,9 @@
 ![Sugoi logo](https://www.sugoijs.com/assets/logo_inverse.png)
 
 [![Build Status](https://travis-ci.org/sugoiJS/mongoDB.svg?branch=master)](https://travis-ci.org/sugoiJS/mongoDB)
+
+[![codecov](https://codecov.io/gh/sugoiJS/mongoDB/branch/master/graph/badge.svg)](https://codecov.io/gh/sugoiJS/mongoDB)
+
 ## Introduction
 SugoiJS is a minimal modular framework.
 
