@@ -2,7 +2,7 @@
 
 ![Sugoi logo](https://www.sugoijs.com/assets/logo_inverse.png)
 
-
+[![Build Status](https://travis-ci.org/sugoiJS/mongoDB.svg?branch=master)](https://travis-ci.org/sugoiJS/mongoDB)
 ## Introduction
 SugoiJS is a minimal modular framework.
 
@@ -18,6 +18,48 @@ This package relays on Sugoi\ORM infrastructure using the ConnectableModel abstr
 ## Installation
 
 > npm install --save @sugoi/mongoDB
+
+### tsconfig.json:
+
+Under your tsconfig - compilerOptions set:
+
+- `"target": "es2015"`
+
+- `"emitDecoratorMetadata": true`
+
+- `"experimentalDecorators": true`
+
+- `"lib": ["es2015","dom"]`
+
+
+#### Template
+
+You are able to use the config template which was set for the @sugoi/demo application:
+
+    {
+      "compilerOptions": {
+        "baseUrl": "./src",
+        "allowJs": true,
+        "target": "es2015",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+          "es2015",
+          "dom"
+        ],
+        "typeRoots": [
+          "./node_modules/@types"
+        ],
+        "types": [
+          "body-parser",
+          "express",
+          "node"
+        ]
+      }
+    }
 
 ### Bootstrapping
 
