@@ -1,36 +1,79 @@
-import {Connection} from "@sugoi/orm";
+import {CONNECTION_STATUS, IConnection} from "@sugoi/orm";
+import {Db, MongoClient} from "mongodb";
+import {IMongoConnectionConfig} from "../interfaces/mongo-connection-config.interface";
 
 
-export class MongoConnection extends Connection {
+export class MongoConnection implements IConnection, IMongoConnectionConfig {
+    protocol: string = `mongodb://`;
+    port: number = 27017;
+    hostName: string;
+    status: CONNECTION_STATUS;
+    connectionClient: {
+        dbInstance: Db,
+        client: MongoClient
+    };
+    db?: string;
+    connectionName?: string;
+    user?: string;
+    password?: string;
+    authDB?: string;
     public newParser: boolean = false;
 
 
-    protected constructor(hostName: string,
-                          db: string,
-                          port: number = 27017) {
-        super(hostName, db, port);
+    connect(): Promise<boolean> {
+        const connectionConfig = {
+            authSource: this.authDB || this.db
+        };
+        if (this.user && this.password) {
+            connectionConfig['auth'] = {
+                user: this.user,
+                password: this.password
+            };
+        }
+        if (this.shouldUseNewParser()) {
+            connectionConfig['useNewUrlParser'] = true;
+        }
+
+        return MongoClient.connect(this.getConnectionString(), connectionConfig)
+            .then((client: MongoClient) => {
+                client.on("error", () => this.disconnect());
+                this.connectionClient = {
+                    dbInstance: client.db(this.db),
+                    client
+                };
+                return true
+            })
+            .catch(err => {
+                console.error(err);
+                throw err;
+            });
     }
 
-    public shouldUseNewParser():boolean {
+
+    isConnected(): Promise<boolean> {
+        return Promise.resolve(this.status === CONNECTION_STATUS.CONNECTED);
+    }
+
+
+    public shouldUseNewParser(): boolean {
         return this.newParser;
     }
 
     public disconnect() {
-        const connection = this.getConnection();
-        if (!(connection && connection.client))
-            return Promise.resolve(null);
+        if (!this.connectionClient)
+            return Promise.resolve(false);
         else {
-            return connection.client.close(true)
+            return this.connectionClient.client.close(true)
                 .then((disconnectObject) => {
-                    super.disconnect();
-                    return disconnectObject;
+                    this.status = CONNECTION_STATUS.DISCONNECTED
+                    return true;
                 });
         }
 
     }
 
     public getConnectionString() {
-        let connString = `mongodb://`;
+        let connString = this.protocol;
         if (this.user && this.password) {
             connString += `${this.user}:${this.password}@`;
         }

@@ -9,7 +9,7 @@ import {
     FilterQuery
 } from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
-import {QueryOptions,ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException} from "@sugoi/orm";
+import {QueryOptions, ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException} from "@sugoi/orm";
 import {SortOptionsMongo} from "../constants/sort-options-mongo.constant";
 
 export abstract class MongoModel extends ConnectableModel {
@@ -21,11 +21,7 @@ export abstract class MongoModel extends ConnectableModel {
 
     protected static collection: Collection;
 
-    protected static ConnectionType = MongoConnection;
-
-    constructor() {
-        super();
-    }
+    protected static connectionClass = MongoConnection;
 
 
     public static getIdObject(id: string | number) {
@@ -34,6 +30,7 @@ export abstract class MongoModel extends ConnectableModel {
 
     protected static getCollection(connectionName: string, collectionName: string): Promise<Collection> {
         return this.connect(connectionName)
+            .then((data: any) => data.connectionClient)
             .then(data => data.dbInstance)
             .then((db: Db) => db.collection(collectionName))
     }
@@ -48,12 +45,6 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    public static disconnect(connectionName: string = this.getConnectionName()): Promise<any> {
-        return this.connections.has(connectionName)
-            ? this.connections.get(connectionName).disconnect()
-            : Promise.resolve(null)
-    }
-
     protected static findEmitter(query: FilterQuery<any>, options: QueryOptions = QueryOptions.builder()): Promise<any> {
         const id = this.getIdFromQuery(query);
         const sortObject = {};
@@ -67,8 +58,8 @@ export abstract class MongoModel extends ConnectableModel {
                 let queryBuilder = collection.find(query)
                     .limit(options.getLimit() || 0)
                     .skip(options.getOffset() || 0);
-                if (options.getSortOption() && options.getSortOption().length > 0) {
-                    options.getSortOption().forEach(sortOption => {
+                if (options.getSortOptions() && options.getSortOptions().length > 0) {
+                    options.getSortOptions().forEach(sortOption => {
                         sortObject[sortOption.field] = SortOptionsMongo[sortOption.sortOption];
                     });
                     queryBuilder = queryBuilder.sort(sortObject);
@@ -171,35 +162,6 @@ export abstract class MongoModel extends ConnectableModel {
         if (data._id)
             data._id = data._id.toString();
         return super.clone(classIns, data);
-    }
-
-    public static connectEmitter(connection: MongoConnection): Promise<{ dbInstance: Db, client: MongoClient }> {
-        const connectionConfig = {
-            authSource: connection.authDB || connection.db
-        };
-        if (connection.user && connection.password) {
-            connectionConfig['auth'] = {
-                user: connection.user,
-                password: connection.password
-            };
-        }
-        if (connection.shouldUseNewParser()) {
-            connectionConfig['useNewUrlParser'] = true;
-        }
-
-        return MongoClient.connect(connection.getConnectionString(), connectionConfig)
-            .then((client: MongoClient) => {
-                client.on("error", () => this.disconnect(connection.connectionName));
-                return {
-                    dbInstance: client.db(connection.db),
-                    client,
-                    connection
-                }
-            })
-            .catch(err=>{
-                console.error(err);
-                throw err;
-            });
     }
 
     private static checkForId(id) {

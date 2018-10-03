@@ -25,6 +25,7 @@ export async function connect() {
         console.info(connString);
     })
         .then(() => MongoModel.setConnection(config, "TESTING"))
+        .then(_connection => _connection.connectionClient)
         .then(_connection => {
             client = _connection.client;
             connection = _connection.connection;
@@ -41,11 +42,13 @@ export async function disconnect(client, mongod, connection) {
         let disconnectRes = await Dummy.disconnect("t");
         expect(disconnectRes).toEqual(null);
         disconnectRes = await Dummy.disconnect();
+        expect(disconnectRes).toBeTruthy();
         //corrupt disconnect
-        delete connection.getConnection().client;
+        const connection = Dummy.getConnection();
+        delete connection.connectionClient;
         disconnectRes = await connection.disconnect();
-        expect(disconnectRes).toEqual(null);
-    }catch (err){
+        expect(disconnectRes).toEqual(false);
+    } catch (err) {
         console.error(err);
     }
     return await mongod.stop();
@@ -96,7 +99,9 @@ export async function setResources() {
     const p = [];
     for (let i = 0; i < recAmount; i++) {
         p.push(
-            Dummy.builder(`${recNamePrefix}${i}`).save()
+            new Promise(resolve => {
+                setTimeout(() => Dummy.builder(`${recNamePrefix}${i}`).save().then(resolve), i * 300)
+            })
         );
     }
     Promise.race(p).then(first => {
@@ -160,7 +165,7 @@ describe("Model read test suit", () => {
         expect.assertions(1);
         const resAmount = await Dummy.findAll({name: {$regex: `${recNamePrefix}`}}, QueryOptions
             .builder()
-            .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime"))
+            .setSortOptions(new SortItem(SortOptions.DESC, "lastSavedTime"))
         )
             .then(res => res.length);
         expect(resAmount).toBe(recAmount);
@@ -193,11 +198,11 @@ describe("Model read test suit", () => {
 
     it("Find by Id $in", async () => {
         expect.assertions(1);
-        const dummy = await Dummy.find({_id:{$in:[MongoModel.getIdObject(mockObject.id)]}}, QueryOptions
+        const dummy = await Dummy.find({_id: {$in: [MongoModel.getIdObject(mockObject.id)]}}, QueryOptions
             .builder()
             .setLimit(1)
             .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime"))
-        ).then(res=>res[0]);
+        ).then(res => res[0]);
         expect(dummy).toEqual(mockObject)
     });
 });
@@ -218,7 +223,7 @@ describe("Model update test suit", () => {
     it("update by id - validation pass", async () => {
         expect.assertions(1);
         const dummy = await Dummy.updateById<any>(MockId, {name: "12", isUpdate: true})
-            .then(res => res.ok ? Dummy.find({_id:MockId},QueryOptions.builder().setLimit(1)) : null)
+            .then(res => res.ok ? Dummy.find({_id: MockId}, QueryOptions.builder().setLimit(1)) : null)
             .then(res => res[0])
             .then(res => {
                 if (!res) res = {};
@@ -270,8 +275,8 @@ describe("Model remove test suit", () => {
     it("remove by id $in", async () => {
         expect.assertions(1);
         const dummy = await Dummy.builder("test2").save()
-            .then(dummy => Dummy.removeAll<any>({_id:{$in:[Dummy.getIdObject(dummy.id)]}}))
-            .then((res:any) => res.n);
+            .then(dummy => Dummy.removeAll<any>({_id: {$in: [Dummy.getIdObject(dummy.id)]}}))
+            .then((res: any) => res.n);
         expect(dummy).toBe(1)
     });
 
@@ -344,7 +349,7 @@ describe("Model extra functions", () => {
         const dummyRes = await dummy.update()
             .then(res => Dummy.findById(d.id))
             .then(res => res.toJSON());
-        expect({name:dummyRes.name,id:dummyRes.id}).toEqual({name:JSONDummy.name,id:JSONDummy.id});
+        expect({name: dummyRes.name, id: dummyRes.id}).toEqual({name: JSONDummy.name, id: JSONDummy.id});
     });
 
 });
