@@ -40,7 +40,7 @@ export async function disconnect(client, mongod, connection) {
     expect.assertions(2);
     try {
         let disconnectRes = await Dummy.disconnect("t");
-        expect(disconnectRes).toEqual(null);
+        expect(disconnectRes).toEqual(false);
         disconnectRes = await Dummy.disconnect();
         expect(disconnectRes).toBeTruthy();
         //corrupt disconnect
