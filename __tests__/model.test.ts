@@ -10,7 +10,7 @@ export async function connect() {
         protocol: "mongodb://",
         hostName: "127.0.0.1",
         db: "SUGOIJS-TEST",
-        user: null,
+        user:   null,
         password: null,
         newParser: true
     };
@@ -24,7 +24,7 @@ export async function connect() {
     return await mongod.getConnectionString().then(connString => {
         console.info(connString);
     })
-        .then(() => MongoModel.setConnection(config, "TESTING"))
+        .then(() => MongoModel.setConnection(config,"TESTING"))
         .then(_connection => _connection.connectionClient)
         .then(_connection => {
             client = _connection.client;
@@ -40,7 +40,7 @@ export async function disconnect(client, mongod, connection) {
     expect.assertions(2);
     try {
         let disconnectRes = await Dummy.disconnect("t");
-        expect(disconnectRes).toEqual(false);
+        expect(disconnectRes).toEqual(null);
         disconnectRes = await Dummy.disconnect();
         expect(disconnectRes).toBeTruthy();
         //corrupt disconnect

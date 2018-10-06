@@ -3,14 +3,14 @@ import {Db, MongoClient} from "mongodb";
 import {IMongoConnectionConfig} from "../interfaces/mongo-connection-config.interface";
 
 
-export class MongoConnection implements IConnection, IMongoConnectionConfig {
+export class MongoConnection implements IConnection,IMongoConnectionConfig {
     protocol: string = `mongodb://`;
     port: number = 27017;
     hostName: string;
     status: CONNECTION_STATUS;
     connectionClient: {
         dbInstance: Db,
-        client: MongoClient
+        client:MongoClient
     };
     db?: string;
     connectionName?: string;
@@ -41,6 +41,7 @@ export class MongoConnection implements IConnection, IMongoConnectionConfig {
                     dbInstance: client.db(this.db),
                     client
                 };
+                this.status = CONNECTION_STATUS.CONNECTED;
                 return true
             })
             .catch(err => {
@@ -60,12 +61,14 @@ export class MongoConnection implements IConnection, IMongoConnectionConfig {
     }
 
     public disconnect() {
-        if (!this.connectionClient)
+        if (!this.connectionClient) {
+            this.status = CONNECTION_STATUS.DISCONNECTED;
             return Promise.resolve(false);
+        }
         else {
             return this.connectionClient.client.close(true)
                 .then((disconnectObject) => {
-                    this.status = CONNECTION_STATUS.DISCONNECTED
+                    this.status = CONNECTION_STATUS.DISCONNECTED;
                     return true;
                 });
         }

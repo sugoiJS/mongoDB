@@ -9,8 +9,12 @@ import {
     FilterQuery
 } from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
-import {QueryOptions, ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException} from "@sugoi/orm";
+import {
+    QueryOptions, ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException,
+    Connection, IConnectionConfig, IConnection
+} from "@sugoi/orm";
 import {SortOptionsMongo} from "../constants/sort-options-mongo.constant";
+import {IMongoConnectionConfig} from "../interfaces/mongo-connection-config.interface";
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -21,7 +25,14 @@ export abstract class MongoModel extends ConnectableModel {
 
     protected static collection: Collection;
 
-    protected static connectionClass = MongoConnection;
+    public static setConnection(configData: IMongoConnectionConfig, connectionName?: string): Promise<IConnection>;
+    public static setConnection(configData: IMongoConnectionConfig, connectionClass: any = null, connectionName: any = "default"): Promise<IConnection> {
+        let connectionClassTemp: any = MongoConnection;
+        if (!connectionClass || typeof connectionClass === "string") {
+            connectionName = (<string>connectionClass) || "default";
+        }
+        return super.setConnection(configData, connectionClassTemp, connectionName);
+    }
 
 
     public static getIdObject(id: string | number) {
