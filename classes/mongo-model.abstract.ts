@@ -10,20 +10,30 @@ import {
 } from "mongodb";
 import {MongoConnection} from "./mongo-connection.class";
 import {
-    QueryOptions, ConnectableModel, getPrimaryKey, ModelAbstract, Primary, SugoiModelException,
-    Connection, IConnectionConfig, IConnection
+    QueryOptions,
+    ConnectableModel,
+    getPrimaryKey,
+    Ignore,
+    Primary,
+    SugoiModelException,
+    IConnection
 } from "@sugoi/orm";
 import {SortOptionsMongo} from "../constants/sort-options-mongo.constant";
 import {IMongoConnectionConfig} from "../interfaces/mongo-connection-config.interface";
 
 export abstract class MongoModel extends ConnectableModel {
 
-    protected client: MongoClient;
-
     @Primary()
     protected _id: ObjectID;
 
+    @Ignore()
+    protected client: MongoClient;
+
     protected static collection: Collection;
+
+    constructor() {
+        super();
+    }
 
     public static setConnection(configData: IMongoConnectionConfig, connectionName?: string): Promise<IConnection>;
     public static setConnection(configData: IMongoConnectionConfig, connectionClass: any = null, connectionName: any = "default"): Promise<IConnection> {
@@ -89,7 +99,7 @@ export abstract class MongoModel extends ConnectableModel {
     public saveEmitter(options: CollectionInsertOneOptions): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
-                return (<any>this).constructor.collection.insertOne(this.formalize(), options)
+                return (<any>this).constructor.collection.insertOne(this, options)
                     .then((value) => {
                         return value.ops[0];
                     })
@@ -97,16 +107,17 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    public updateEmitter(options: ReplaceOneOptions = {upsert: true}): Promise<any> {
+    public updateEmitter(options: ReplaceOneOptions = {upsert: false}): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
-                const formalizeValue = this.formalize();
+                const formalizeValue = Object.assign({},this);
                 const primaryKey = getPrimaryKey(this);
                 delete formalizeValue[primaryKey];
                 const query = {[primaryKey]: MongoModel.getIdObject(this[primaryKey])};
                 return (<any>this).constructor.collection.updateOne(query, {$set: formalizeValue}, options)
-            }).then((res: any) => {
-                res = res.toJSON();
+            })
+            .then((res: any) => res.result)
+            .then((res: any) => {
                 if (res.ok && res.nModified)
                     return res;
                 else
@@ -128,8 +139,9 @@ export abstract class MongoModel extends ConnectableModel {
                 return options && options.limit == 1
                     ? this.collection.deleteOne(query, options)
                     : this.collection.deleteMany(query, options);
-            }).then((res: any) => {
-                res = res.toJSON();
+            })
+            .then((res: any) => res.result)
+            .then((res: any) => {
                 if (res.ok && res.n)
                     return res;
                 else

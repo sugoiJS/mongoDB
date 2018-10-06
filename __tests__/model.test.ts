@@ -182,7 +182,7 @@ describe("Model read test suit", () => {
         expect.assertions(1);
         const dummyRes = await Dummy.findOne({name: {$regex: `${recNamePrefix}`}}, QueryOptions
             .builder()
-            .setSortOption(new SortItem(SortOptions.ASC, "lastSavedTime"))
+            .setSortOptions(new SortItem(SortOptions.ASC, "lastSavedTime"))
         );
         expect(dummyRes).toEqual(mockObject);
     });
@@ -191,7 +191,7 @@ describe("Model read test suit", () => {
         expect.assertions(1);
         const dummy = await Dummy.findById(mockObject.id, QueryOptions
             .builder()
-            .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime"))
+            .setSortOptions(new SortItem(SortOptions.DESC, "lastSavedTime"))
         );
         expect(dummy).toEqual(mockObject)
     });
@@ -201,7 +201,7 @@ describe("Model read test suit", () => {
         const dummy = await Dummy.find({_id: {$in: [MongoModel.getIdObject(mockObject.id)]}}, QueryOptions
             .builder()
             .setLimit(1)
-            .setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime"))
+            .setSortOptions(new SortItem(SortOptions.DESC, "lastSavedTime"))
         ).then(res => res[0]);
         expect(dummy).toEqual(mockObject)
     });
@@ -223,9 +223,13 @@ describe("Model update test suit", () => {
     it("update by id - validation pass", async () => {
         expect.assertions(1);
         const dummy = await Dummy.updateById<any>(MockId, {name: "12", isUpdate: true})
-            .then(res => res.ok ? Dummy.find({_id: MockId}, QueryOptions.builder().setLimit(1)) : null)
-            .then(res => res[0])
+            .then(r=>{
+                console.log(r)
+                return r;
+            })
+            .then(res => res.ok ? Dummy.findOne({_id: MockId}, QueryOptions.builder().setLimit(1)) : null)
             .then(res => {
+                console.log(res)
                 if (!res) res = {};
                 return {name: res.name, lastUpdated: res.lastUpdated};
             });
@@ -293,7 +297,7 @@ describe("Model remove test suit", () => {
         expect.assertions(1);
         const dummy = await Dummy.removeOne<any>(
             {name: {$regex: recNamePrefix}},
-            QueryOptions.builder().setSortOption(new SortItem(SortOptions.ASC, "lastSavedTime"))
+            QueryOptions.builder().setSortOptions(new SortItem(SortOptions.ASC, "lastSavedTime"))
         )
             .then(res => res.n);
         expect(dummy).toBe(1);
@@ -302,7 +306,7 @@ describe("Model remove test suit", () => {
     it("remove after find ", async () => {
         expect.assertions(1);
         const dummyRes = await Dummy.findOne({name: {$regex: recNamePrefix}},
-            QueryOptions.builder().setSortOption(new SortItem(SortOptions.DESC, "lastSavedTime")))
+            QueryOptions.builder().setSortOptions(new SortItem(SortOptions.DESC, "lastSavedTime")))
             .then(dummy => dummy.remove())
             .then(res => res.n)
         expect(dummyRes).toBe(1);
@@ -351,5 +355,47 @@ describe("Model extra functions", () => {
             .then(res => res.toJSON());
         expect({name: dummyRes.name, id: dummyRes.id}).toEqual({name: JSONDummy.name, id: JSONDummy.id});
     });
+
+    it("Ignored fields", async () => {
+        expect.assertions(10);
+        const dummy = Dummy.builder("TestIgnore");
+        dummy.addFieldsToIgnore("lastUpdated");
+        expect(dummy.getIgnoredFields().indexOf("lastUpdated")).toBeGreaterThan(-1);
+        let res = await dummy.save();
+        dummy.isUpdate = true;
+        expect(res.saved).not.toBeDefined();
+        res = await dummy.update().then(() => Dummy.findById(res.id));
+        expect(res.lastUpdated).not.toBeDefined();
+        expect(res.updated).not.toBeDefined();
+        expect(res.isUpdate).not.toBeDefined();
+        dummy.removeFieldsFromIgnored("lastUpdated", "updated");
+        expect(dummy.getIgnoredFields().indexOf("lastUpdated")).toEqual(-1);
+        expect(dummy.getIgnoredFields().indexOf("updated")).toEqual(-1);
+        res = await dummy.update().then(() => Dummy.findById(res.id));
+        expect(res.lastUpdated).toEqual("today");
+        expect(res.isUpdate).not.toBeDefined();
+        expect(res.updated).toBeDefined();
+    });
+
+    it("Ignored fields init", async () => {
+        expect.assertions(8);
+        const dummy = Dummy.builder("TestIgnore");
+        dummy.addFieldsToIgnore("lastUpdated");
+        dummy.removeFieldsFromIgnored("isUpdate");
+        expect(dummy.getIgnoredFields().length).toEqual(5);
+        let res = await dummy.save();
+        dummy.isUpdate = true;
+        expect(res.saved).not.toBeDefined();
+        res = await dummy.update().then(() => Dummy.findById(res.id));
+        expect(res.lastUpdated).not.toBeDefined();
+        expect(res.updated).not.toBeDefined();
+        expect(res.isUpdate).toBeTruthy();
+        dummy.initIgnoredFields();
+        res.isUpdate = false;
+        expect(dummy.getIgnoredFields().length).toEqual(5);
+        res = await res.update().then((res) => res.ok ? Dummy.findById(res.id): {});
+        expect(res.lastUpdated).toBeDefined();
+        expect(res.isUpdate).toBeTruthy();
+    })
 
 });

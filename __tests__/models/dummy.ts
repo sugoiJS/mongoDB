@@ -9,6 +9,7 @@ import {
     IValidate,
     ModelName
 } from "../../index";
+import {Ignore} from "@sugoi/orm";
 
 
 
@@ -26,8 +27,11 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     public lastUpdated;
     public lastSaved;
     public lastSavedTime;
+    @Ignore()
     public saved: boolean;
+    @Ignore()
     public updated: boolean;
+    @Ignore()
     public isUpdate: boolean;
 
     constructor(public name: string) {
@@ -39,7 +43,6 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     }
 
     beforeUpdate(): Promise<any> | void {
-        delete this.isUpdate;
         this.lastUpdated = "today";
     }
 
@@ -48,7 +51,6 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     }
 
     beforeSave(): Promise<any> | void {
-        delete this.isUpdate;
         this.lastSaved = "today";
         this.lastSavedTime = new Date().getTime()
     }
