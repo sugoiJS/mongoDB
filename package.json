@@ -1,6 +1,6 @@
 {
   "name": "@sugoi/mongodb",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "SugoiJS mongoDB",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
