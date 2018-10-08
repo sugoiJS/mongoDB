@@ -1,6 +1,6 @@
 {
   "name": "@sugoi/mongodb",
-  "version": "2.4.0",
+  "version": "2.5.3",
   "description": "SugoiJS mongoDB",
   "main": "index.js",
   "types": "index.d.ts",
@@ -37,8 +37,8 @@
   "author": "Orel Balilti",
   "license": "MIT",
   "dependencies": {
-    "@sugoi/core": "2.1.3",
-    "@sugoi/orm": "2.4.0",
+    "@sugoi/core": "~2.2.3",
+    "@sugoi/orm": "~2.5.2",
     "mongodb": "^3.1.3"
   },
   "devDependencies": {
