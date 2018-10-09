@@ -1,0 +1,8373 @@
+{
+	"id": 0,
+	"name": "@sugoi/mongodb",
+	"kind": 0,
+	"flags": {},
+	"children": [
+		{
+			"id": 229,
+			"name": "Dummy",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true
+			},
+			"decorators": [
+				{
+					"name": "ConnectionName",
+					"type": {
+						"type": "reference",
+						"name": "ConnectionName"
+					},
+					"arguments": {
+						"name": "\"TESTING\""
+					}
+				},
+				{
+					"name": "ModelName",
+					"type": {
+						"type": "reference",
+						"name": "ModelName"
+					},
+					"arguments": {
+						"name": "\"dummy\""
+					}
+				}
+			],
+			"children": [
+				{
+					"id": 240,
+					"name": "constructor",
+					"kind": 512,
+					"kindString": "Constructor",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 242,
+							"name": "new Dummy",
+							"kind": 16384,
+							"kindString": "Constructor signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 243,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Dummy",
+								"id": 229
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "MongoModel.__constructor",
+								"id": 53
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 31,
+							"character": 29
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "MongoModel.__constructor",
+						"id": 53
+					}
+				},
+				{
+					"id": 239,
+					"name": "isUpdate",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 31,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 235,
+					"name": "lastSaved",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 27,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					}
+				},
+				{
+					"id": 236,
+					"name": "lastSavedTime",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 28,
+							"character": 24
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					}
+				},
+				{
+					"id": 234,
+					"name": "lastUpdated",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 26,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					}
+				},
+				{
+					"id": 241,
+					"name": "name",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isConstructorProperty": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 33,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 237,
+					"name": "saved",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 29,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 238,
+					"name": "updated",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 30,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 306,
+					"name": "status",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 6,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "CONNECTION_STATUS"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.status"
+					}
+				},
+				{
+					"id": 230,
+					"name": "id",
+					"kind": 262144,
+					"kindString": "Accessor",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"getSignature": {
+						"id": 231,
+						"name": "__get",
+						"kind": 524288,
+						"kindString": "Get signature",
+						"flags": {},
+						"type": {
+							"type": "intrinsic",
+							"name": "any"
+						}
+					},
+					"setSignature": {
+						"id": 232,
+						"name": "__set",
+						"kind": 1048576,
+						"kindString": "Set signature",
+						"flags": {},
+						"parameters": [
+							{
+								"id": 233,
+								"name": "id",
+								"kind": 32768,
+								"kindString": "Parameter",
+								"flags": {},
+								"type": {
+									"type": "intrinsic",
+									"name": "any"
+								}
+							}
+						],
+						"type": {
+							"type": "intrinsic",
+							"name": "void"
+						}
+					},
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 18,
+							"character": 17
+						},
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 22,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 253,
+					"name": "afterSave",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 254,
+							"name": "afterSave",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 255,
+									"name": "saveResponse",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									},
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 56,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 248,
+					"name": "afterUpdate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 249,
+							"name": "afterUpdate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 250,
+									"name": "updateResponse",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									},
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 46,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 251,
+					"name": "beforeSave",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 252,
+							"name": "beforeSave",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									},
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 50,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 246,
+					"name": "beforeUpdate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 247,
+							"name": "beforeUpdate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									},
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 41,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 244,
+					"name": "beforeValidate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 245,
+							"name": "beforeValidate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"name": "Promise",
+										"typeArguments": [
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									},
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 37,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 401,
+					"name": "getIdQuery",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 402,
+							"name": "getIdQuery",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "build and return query object containing the primary key and his value",
+								"returns": "\n"
+							},
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 403,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"indexSignature": {
+										"id": 404,
+										"name": "__index",
+										"kind": 8192,
+										"kindString": "Index signature",
+										"flags": {},
+										"parameters": [
+											{
+												"id": 405,
+												"name": "x",
+												"kind": 32768,
+												"kindString": "Parameter",
+												"flags": {},
+												"type": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										],
+										"type": {
+											"type": "intrinsic",
+											"name": "any"
+										}
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+											"line": 68,
+											"character": 17
+										}
+									]
+								}
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getIdQuery"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 68,
+							"character": 14
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getIdQuery"
+					}
+				},
+				{
+					"id": 264,
+					"name": "getMongoId",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 265,
+							"name": "getMongoId",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.getMongoId",
+								"id": 58
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 41,
+							"character": 21
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.getMongoId",
+						"id": 58
+					}
+				},
+				{
+					"id": 361,
+					"name": "remove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 362,
+							"name": "remove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 363,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 364,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 365,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.remove"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 32,
+							"character": 10
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.remove"
+					}
+				},
+				{
+					"id": 345,
+					"name": "save",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 346,
+							"name": "save",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 347,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 348,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.save"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 21,
+							"character": 8
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.save"
+					}
+				},
+				{
+					"id": 269,
+					"name": "saveEmitter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 270,
+							"name": "saveEmitter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 271,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "CollectionInsertOneOptions"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.saveEmitter",
+								"id": 63
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 87,
+							"character": 22
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.saveEmitter",
+						"id": 63
+					}
+				},
+				{
+					"id": 389,
+					"name": "setPrimaryPropertyValue",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 390,
+							"name": "setPrimaryPropertyValue",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Set the value of class primary property"
+							},
+							"parameters": [
+								{
+									"id": 391,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "TIdentifierTypes"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.setPrimaryPropertyValue"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 45,
+							"character": 27
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.setPrimaryPropertyValue"
+					}
+				},
+				{
+					"id": 341,
+					"name": "sugAfterFind",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 342,
+							"name": "sugAfterFind",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 343,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 344,
+									"name": "resolvedData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugAfterFind"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 18,
+							"character": 16
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugAfterFind"
+					}
+				},
+				{
+					"id": 385,
+					"name": "sugAfterRemove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 386,
+							"name": "sugAfterRemove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 387,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 388,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugAfterRemove"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 39,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugAfterRemove"
+					}
+				},
+				{
+					"id": 357,
+					"name": "sugAfterUpdate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 358,
+							"name": "sugAfterUpdate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 359,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 360,
+									"name": "updatedData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugAfterUpdate"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 31,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugAfterUpdate"
+					}
+				},
+				{
+					"id": 337,
+					"name": "sugBeforeFind",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 338,
+							"name": "sugBeforeFind",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 339,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 340,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugBeforeFind"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 17,
+							"character": 17
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugBeforeFind"
+					}
+				},
+				{
+					"id": 381,
+					"name": "sugBeforeRemove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 382,
+							"name": "sugBeforeRemove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 383,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 384,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugBeforeRemove"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 38,
+							"character": 19
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugBeforeRemove"
+					}
+				},
+				{
+					"id": 355,
+					"name": "sugBeforeUpdate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 356,
+							"name": "sugBeforeUpdate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugBeforeUpdate"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 30,
+							"character": 19
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugBeforeUpdate"
+					}
+				},
+				{
+					"id": 349,
+					"name": "sugValidate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 350,
+							"name": "sugValidate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										]
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugValidate"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 24,
+							"character": 15
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugValidate"
+					}
+				},
+				{
+					"id": 275,
+					"name": "toJSON",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 276,
+							"name": "toJSON",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intersection",
+								"types": [
+									{
+										"type": "unknown",
+										"name": "this"
+									},
+									{
+										"type": "intrinsic",
+										"name": "Object"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.toJSON",
+								"id": 69
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 151,
+							"character": 17
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.toJSON",
+						"id": 69
+					}
+				},
+				{
+					"id": 351,
+					"name": "update",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 352,
+							"name": "update",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 353,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 354,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.update"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 27,
+							"character": 10
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.update"
+					}
+				},
+				{
+					"id": 272,
+					"name": "updateEmitter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 273,
+							"name": "updateEmitter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 274,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "ReplaceOneOptions"
+									},
+									"defaultValue": " {upsert: true}"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.updateEmitter",
+								"id": 66
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 98,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.updateEmitter",
+						"id": 66
+					}
+				},
+				{
+					"id": 256,
+					"name": "validate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 257,
+							"name": "validate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										]
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 60,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 258,
+					"name": "builder",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 259,
+							"name": "builder",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 260,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Dummy",
+								"id": 229
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/models/dummy.ts",
+							"line": 64,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 392,
+					"name": "castIdToQuery",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 393,
+							"name": "castIdToQuery",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "In case string is passed this function build query object using the class primary key",
+								"returns": ":TIdentifierTypes}\n"
+							},
+							"parameters": [
+								{
+									"id": 394,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									}
+								},
+								{
+									"id": 395,
+									"name": "classToUse",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "class to take the primary key from"
+									},
+									"type": {
+										"type": "reference",
+										"name": "ModelAbstract"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.castIdToQuery"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 54,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.castIdToQuery"
+					}
+				},
+				{
+					"id": 283,
+					"name": "clone",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 284,
+							"name": "clone",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 285,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 286,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ModelAbstract.clone"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.clone",
+								"id": 77
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 165,
+							"character": 23
+						},
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 166,
+							"character": 23
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ModelAbstract.clone"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.clone",
+						"id": 77
+					}
+				},
+				{
+					"id": 303,
+					"name": "connect",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 304,
+							"name": "connect",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 305,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.connect"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 13,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.connect"
+					}
+				},
+				{
+					"id": 287,
+					"name": "connectEmitter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 288,
+							"name": "connectEmitter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 289,
+									"name": "connection",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "MongoConnection",
+										"id": 5
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 290,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "classes/mongo-model.abstract.ts",
+													"line": 176,
+													"character": 71
+												}
+											]
+										}
+									}
+								]
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ConnectableModel.connectEmitter"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.connectEmitter",
+								"id": 81
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 176,
+							"character": 32
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ConnectableModel.connectEmitter"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.connectEmitter",
+						"id": 81
+					}
+				},
+				{
+					"id": 266,
+					"name": "disconnect",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 267,
+							"name": "disconnect",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 268,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": " this.getConnectionName()"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ConnectableModel.disconnect"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.disconnect",
+								"id": 60
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 51,
+							"character": 28
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ConnectableModel.disconnect"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.disconnect",
+						"id": 60
+					}
+				},
+				{
+					"id": 317,
+					"name": "find",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 318,
+							"name": "find",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 319,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 320,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 321,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "Array",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "T"
+											}
+										]
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.find"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 13,
+							"character": 15
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.find"
+					}
+				},
+				{
+					"id": 327,
+					"name": "findAll",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 328,
+							"name": "findAll",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 329,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 330,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 331,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "T"
+										}
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.findAll"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 15,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.findAll"
+					}
+				},
+				{
+					"id": 332,
+					"name": "findById",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 333,
+							"name": "findById",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 334,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 335,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "TIdentifierTypes"
+									}
+								},
+								{
+									"id": 336,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.findById"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 16,
+							"character": 19
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.findById"
+					}
+				},
+				{
+					"id": 322,
+					"name": "findOne",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 323,
+							"name": "findOne",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 324,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 325,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 326,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.findOne"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 14,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.findOne"
+					}
+				},
+				{
+					"id": 315,
+					"name": "getCollectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 316,
+							"name": "getCollectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getCollectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 12,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getCollectionName"
+					}
+				},
+				{
+					"id": 295,
+					"name": "getConnection",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 296,
+							"name": "getConnection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 297,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Connection"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.getConnection"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 10,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.getConnection"
+					}
+				},
+				{
+					"id": 301,
+					"name": "getConnectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 302,
+							"name": "getConnectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.getConnectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 12,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.getConnectionName"
+					}
+				},
+				{
+					"id": 396,
+					"name": "getIdFromQuery",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 397,
+							"name": "getIdFromQuery",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Check if the primary key found in the query and return his value",
+								"returns": "\n"
+							},
+							"parameters": [
+								{
+									"id": 398,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The query object"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 399,
+									"name": "classToUse",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "class to take the primary key from"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 400,
+									"name": "deleteProperty",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "flag to remove the primaryKey property from the query"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "TIdentifierTypes"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getIdFromQuery"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 63,
+							"character": 25
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getIdFromQuery"
+					}
+				},
+				{
+					"id": 261,
+					"name": "getIdObject",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 262,
+							"name": "getIdObject",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 263,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "ObjectID"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.getIdObject",
+								"id": 55
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 31,
+							"character": 29
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.getIdObject",
+						"id": 55
+					}
+				},
+				{
+					"id": 313,
+					"name": "getModelName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 314,
+							"name": "getModelName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getModelName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 11,
+							"character": 23
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getModelName"
+					}
+				},
+				{
+					"id": 376,
+					"name": "removeAll",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 377,
+							"name": "removeAll",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 378,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 379,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 380,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.removeAll"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 35,
+							"character": 20
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.removeAll"
+					}
+				},
+				{
+					"id": 366,
+					"name": "removeById",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 367,
+							"name": "removeById",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 368,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 369,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 370,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.removeById"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 33,
+							"character": 21
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.removeById"
+					}
+				},
+				{
+					"id": 371,
+					"name": "removeOne",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 372,
+							"name": "removeOne",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 373,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 374,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 375,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.removeOne"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 34,
+							"character": 20
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.removeOne"
+					}
+				},
+				{
+					"id": 310,
+					"name": "setCollectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 311,
+							"name": "setCollectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 312,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.setCollectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 10,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.setCollectionName"
+					}
+				},
+				{
+					"id": 291,
+					"name": "setConnection",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 292,
+							"name": "setConnection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 293,
+									"name": "configData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "IConnectionConfig"
+									}
+								},
+								{
+									"id": 294,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.setConnection"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 9,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.setConnection"
+					}
+				},
+				{
+					"id": 298,
+					"name": "setConnectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 299,
+							"name": "setConnectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 300,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.setConnectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 11,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.setConnectionName"
+					}
+				},
+				{
+					"id": 307,
+					"name": "setModelName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 308,
+							"name": "setModelName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 309,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.setModelName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 9,
+							"character": 23
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.setModelName"
+					}
+				},
+				{
+					"id": 277,
+					"name": "updateById",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 278,
+							"name": "updateById",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 279,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 280,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 281,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 282,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ModelAbstract.updateById"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "MongoModel.updateById",
+								"id": 71
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 159,
+							"character": 34
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ModelAbstract.updateById"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "MongoModel.updateById",
+						"id": 71
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"kind": 512,
+					"children": [
+						240
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						239,
+						235,
+						236,
+						234,
+						241,
+						237,
+						238,
+						306
+					]
+				},
+				{
+					"title": "Accessors",
+					"kind": 262144,
+					"children": [
+						230
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						253,
+						248,
+						251,
+						246,
+						244,
+						401,
+						264,
+						361,
+						345,
+						269,
+						389,
+						341,
+						385,
+						357,
+						337,
+						381,
+						355,
+						349,
+						275,
+						351,
+						272,
+						256,
+						258,
+						392,
+						283,
+						303,
+						287,
+						266,
+						317,
+						327,
+						332,
+						322,
+						315,
+						295,
+						301,
+						396,
+						261,
+						313,
+						376,
+						366,
+						371,
+						310,
+						291,
+						298,
+						307,
+						277
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "__tests__/models/dummy.ts",
+					"line": 17,
+					"character": 18
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"name": "MongoModel",
+					"id": 52
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "IModel"
+				},
+				{
+					"type": "reference",
+					"name": "IValidate"
+				},
+				{
+					"type": "reference",
+					"name": "IBeforeUpdate"
+				},
+				{
+					"type": "reference",
+					"name": "IAfterUpdate"
+				},
+				{
+					"type": "reference",
+					"name": "IAfterSave"
+				},
+				{
+					"type": "reference",
+					"name": "IBeforeSave"
+				},
+				{
+					"type": "reference",
+					"name": "IBeforeValidate"
+				}
+			]
+		},
+		{
+			"id": 5,
+			"name": "MongoConnection",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true
+			},
+			"children": [
+				{
+					"id": 18,
+					"name": "authDB",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 9,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.authDB"
+					}
+				},
+				{
+					"id": 21,
+					"name": "connection",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 12,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "any"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.connection"
+					}
+				},
+				{
+					"id": 20,
+					"name": "connectionName",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 11,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.connectionName"
+					}
+				},
+				{
+					"id": 14,
+					"name": "db",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 5,
+							"character": 6
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.db"
+					}
+				},
+				{
+					"id": 13,
+					"name": "hostName",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 4,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.hostName"
+					}
+				},
+				{
+					"id": 6,
+					"name": "newParser",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "classes/mongo-connection.class.ts",
+							"line": 5,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "false"
+				},
+				{
+					"id": 17,
+					"name": "password",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 8,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.password"
+					}
+				},
+				{
+					"id": 15,
+					"name": "port",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 6,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.port"
+					}
+				},
+				{
+					"id": 19,
+					"name": "status",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 10,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "CONNECTION_STATUS"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.status"
+					}
+				},
+				{
+					"id": 16,
+					"name": "user",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 7,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.user"
+					}
+				},
+				{
+					"id": 9,
+					"name": "disconnect",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 10,
+							"name": "disconnect",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "Connection.disconnect"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-connection.class.ts",
+							"line": 18,
+							"character": 21
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "Connection.disconnect"
+					}
+				},
+				{
+					"id": 48,
+					"name": "getConnection",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 49,
+							"name": "getConnection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.getConnection"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 24,
+							"character": 17
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.getConnection"
+					}
+				},
+				{
+					"id": 11,
+					"name": "getConnectionString",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 12,
+							"name": "getConnectionString",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "Connection.getConnectionString"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-connection.class.ts",
+							"line": 32,
+							"character": 30
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "Connection.getConnectionString"
+					}
+				},
+				{
+					"id": 43,
+					"name": "isConnected",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 44,
+							"name": "isConnected",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.isConnected"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 20,
+							"character": 15
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.isConnected"
+					}
+				},
+				{
+					"id": 37,
+					"name": "setAuthDB",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 38,
+							"name": "setAuthDB",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 39,
+									"name": "db",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "this"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.setAuthDB"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 18,
+							"character": 13
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.setAuthDB"
+					}
+				},
+				{
+					"id": 45,
+					"name": "setConnection",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 46,
+							"name": "setConnection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 47,
+									"name": "connection",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.setConnection"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 23,
+							"character": 17
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.setConnection"
+					}
+				},
+				{
+					"id": 40,
+					"name": "setConnectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 41,
+							"name": "setConnectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 42,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.setConnectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 19,
+							"character": 21
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.setConnectionName"
+					}
+				},
+				{
+					"id": 30,
+					"name": "setCredentials",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 31,
+							"name": "setCredentials",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 32,
+									"name": "user",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 33,
+									"name": "password",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "this"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.setCredentials"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 16,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.setCredentials"
+					}
+				},
+				{
+					"id": 34,
+					"name": "setStatus",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 35,
+							"name": "setStatus",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 36,
+									"name": "status",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "CONNECTION_STATUS"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "this"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.setStatus"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 17,
+							"character": 13
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.setStatus"
+					}
+				},
+				{
+					"id": 7,
+					"name": "shouldUseNewParser",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 8,
+							"name": "shouldUseNewParser",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-connection.class.ts",
+							"line": 14,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 22,
+					"name": "builder",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 23,
+							"name": "builder",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 24,
+									"name": "hostName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 25,
+									"name": "db",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 26,
+									"name": "port",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Connection"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.builder"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 14,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.builder"
+					}
+				},
+				{
+					"id": 27,
+					"name": "clone",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 28,
+							"name": "clone",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 29,
+									"name": "config",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "IConnectionConfig"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Connection"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "Connection.clone"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/classes/connection.class.d.ts",
+							"line": 15,
+							"character": 16
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "Connection.clone"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						18,
+						21,
+						20,
+						14,
+						13,
+						6,
+						17,
+						15,
+						19,
+						16
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						9,
+						48,
+						11,
+						43,
+						37,
+						45,
+						40,
+						30,
+						34,
+						7,
+						22,
+						27
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "classes/mongo-connection.class.ts",
+					"line": 4,
+					"character": 28
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"name": "Connection"
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "IConnectionConfig"
+				}
+			]
+		},
+		{
+			"id": 52,
+			"name": "MongoModel",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true,
+				"isAbstract": true
+			},
+			"children": [
+				{
+					"id": 53,
+					"name": "constructor",
+					"kind": 512,
+					"kindString": "Constructor",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 54,
+							"name": "new MongoModel",
+							"kind": 16384,
+							"kindString": "Constructor signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"name": "MongoModel",
+								"id": 52
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ConnectableModel.__constructor"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 24,
+							"character": 54
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ConnectableModel.__constructor"
+					}
+				},
+				{
+					"id": 100,
+					"name": "status",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 6,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "CONNECTION_STATUS"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.status"
+					}
+				},
+				{
+					"id": 195,
+					"name": "getIdQuery",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 196,
+							"name": "getIdQuery",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "build and return query object containing the primary key and his value",
+								"returns": "\n"
+							},
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 197,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"indexSignature": {
+										"id": 198,
+										"name": "__index",
+										"kind": 8192,
+										"kindString": "Index signature",
+										"flags": {},
+										"parameters": [
+											{
+												"id": 199,
+												"name": "x",
+												"kind": 32768,
+												"kindString": "Parameter",
+												"flags": {},
+												"type": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										],
+										"type": {
+											"type": "intrinsic",
+											"name": "any"
+										}
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+											"line": 68,
+											"character": 17
+										}
+									]
+								}
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getIdQuery"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 68,
+							"character": 14
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getIdQuery"
+					}
+				},
+				{
+					"id": 58,
+					"name": "getMongoId",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 59,
+							"name": "getMongoId",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 41,
+							"character": 21
+						}
+					]
+				},
+				{
+					"id": 155,
+					"name": "remove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 156,
+							"name": "remove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 157,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 158,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 159,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.remove"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 32,
+							"character": 10
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.remove"
+					}
+				},
+				{
+					"id": 139,
+					"name": "save",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 140,
+							"name": "save",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 141,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 142,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.save"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 21,
+							"character": 8
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.save"
+					}
+				},
+				{
+					"id": 63,
+					"name": "saveEmitter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 64,
+							"name": "saveEmitter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 65,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "CollectionInsertOneOptions"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 87,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 183,
+					"name": "setPrimaryPropertyValue",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 184,
+							"name": "setPrimaryPropertyValue",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Set the value of class primary property"
+							},
+							"parameters": [
+								{
+									"id": 185,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "TIdentifierTypes"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.setPrimaryPropertyValue"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 45,
+							"character": 27
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.setPrimaryPropertyValue"
+					}
+				},
+				{
+					"id": 135,
+					"name": "sugAfterFind",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 136,
+							"name": "sugAfterFind",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 137,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 138,
+									"name": "resolvedData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugAfterFind"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 18,
+							"character": 16
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugAfterFind"
+					}
+				},
+				{
+					"id": 179,
+					"name": "sugAfterRemove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 180,
+							"name": "sugAfterRemove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 181,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 182,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugAfterRemove"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 39,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugAfterRemove"
+					}
+				},
+				{
+					"id": 151,
+					"name": "sugAfterUpdate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 152,
+							"name": "sugAfterUpdate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 153,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 154,
+									"name": "updatedData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugAfterUpdate"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 31,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugAfterUpdate"
+					}
+				},
+				{
+					"id": 131,
+					"name": "sugBeforeFind",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 132,
+							"name": "sugBeforeFind",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 133,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 134,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugBeforeFind"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 17,
+							"character": 17
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugBeforeFind"
+					}
+				},
+				{
+					"id": 175,
+					"name": "sugBeforeRemove",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 176,
+							"name": "sugBeforeRemove",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 177,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 178,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugBeforeRemove"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 38,
+							"character": 19
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugBeforeRemove"
+					}
+				},
+				{
+					"id": 149,
+					"name": "sugBeforeUpdate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 150,
+							"name": "sugBeforeUpdate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugBeforeUpdate"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 30,
+							"character": 19
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugBeforeUpdate"
+					}
+				},
+				{
+					"id": 143,
+					"name": "sugValidate",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 144,
+							"name": "sugValidate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										]
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.sugValidate"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 24,
+							"character": 15
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.sugValidate"
+					}
+				},
+				{
+					"id": 69,
+					"name": "toJSON",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 70,
+							"name": "toJSON",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intersection",
+								"types": [
+									{
+										"type": "unknown",
+										"name": "this"
+									},
+									{
+										"type": "intrinsic",
+										"name": "Object"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 151,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 145,
+					"name": "update",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 146,
+							"name": "update",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 147,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 148,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.update"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 27,
+							"character": 10
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.update"
+					}
+				},
+				{
+					"id": 66,
+					"name": "updateEmitter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 67,
+							"name": "updateEmitter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 68,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "ReplaceOneOptions"
+									},
+									"defaultValue": " {upsert: true}"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 98,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 186,
+					"name": "castIdToQuery",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 187,
+							"name": "castIdToQuery",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "In case string is passed this function build query object using the class primary key",
+								"returns": ":TIdentifierTypes}\n"
+							},
+							"parameters": [
+								{
+									"id": 188,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "any"
+											}
+										]
+									}
+								},
+								{
+									"id": 189,
+									"name": "classToUse",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "class to take the primary key from"
+									},
+									"type": {
+										"type": "reference",
+										"name": "ModelAbstract"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.castIdToQuery"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 54,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.castIdToQuery"
+					}
+				},
+				{
+					"id": 77,
+					"name": "clone",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 78,
+							"name": "clone",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 79,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 80,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ModelAbstract.clone"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 165,
+							"character": 23
+						},
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 166,
+							"character": 23
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ModelAbstract.clone"
+					}
+				},
+				{
+					"id": 97,
+					"name": "connect",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 98,
+							"name": "connect",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 99,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.connect"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 13,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.connect"
+					}
+				},
+				{
+					"id": 81,
+					"name": "connectEmitter",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 82,
+							"name": "connectEmitter",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 83,
+									"name": "connection",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "MongoConnection",
+										"id": 5
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 84,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "classes/mongo-model.abstract.ts",
+													"line": 176,
+													"character": 71
+												}
+											]
+										}
+									}
+								]
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ConnectableModel.connectEmitter"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 176,
+							"character": 32
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ConnectableModel.connectEmitter"
+					}
+				},
+				{
+					"id": 60,
+					"name": "disconnect",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 61,
+							"name": "disconnect",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 62,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": " this.getConnectionName()"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ConnectableModel.disconnect"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 51,
+							"character": 28
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ConnectableModel.disconnect"
+					}
+				},
+				{
+					"id": 111,
+					"name": "find",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 112,
+							"name": "find",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 113,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 114,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 115,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "Array",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "T"
+											}
+										]
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.find"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 13,
+							"character": 15
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.find"
+					}
+				},
+				{
+					"id": 121,
+					"name": "findAll",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 122,
+							"name": "findAll",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 123,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 124,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 125,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "array",
+										"elementType": {
+											"type": "typeParameter",
+											"name": "T"
+										}
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.findAll"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 15,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.findAll"
+					}
+				},
+				{
+					"id": 126,
+					"name": "findById",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 127,
+							"name": "findById",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 128,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 129,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "TIdentifierTypes"
+									}
+								},
+								{
+									"id": 130,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.findById"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 16,
+							"character": 19
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.findById"
+					}
+				},
+				{
+					"id": 116,
+					"name": "findOne",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 117,
+							"name": "findOne",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 118,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 119,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 120,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.findOne"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 14,
+							"character": 18
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.findOne"
+					}
+				},
+				{
+					"id": 109,
+					"name": "getCollectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 110,
+							"name": "getCollectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getCollectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 12,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getCollectionName"
+					}
+				},
+				{
+					"id": 89,
+					"name": "getConnection",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 90,
+							"name": "getConnection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 91,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Connection"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.getConnection"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 10,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.getConnection"
+					}
+				},
+				{
+					"id": 95,
+					"name": "getConnectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 96,
+							"name": "getConnectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.getConnectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 12,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.getConnectionName"
+					}
+				},
+				{
+					"id": 190,
+					"name": "getIdFromQuery",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 191,
+							"name": "getIdFromQuery",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Check if the primary key found in the query and return his value",
+								"returns": "\n"
+							},
+							"parameters": [
+								{
+									"id": 192,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The query object"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 193,
+									"name": "classToUse",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "class to take the primary key from"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 194,
+									"name": "deleteProperty",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"text": "flag to remove the primaryKey property from the query"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "TIdentifierTypes"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getIdFromQuery"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 63,
+							"character": 25
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getIdFromQuery"
+					}
+				},
+				{
+					"id": 55,
+					"name": "getIdObject",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 56,
+							"name": "getIdObject",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 57,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "ObjectID"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 31,
+							"character": 29
+						}
+					]
+				},
+				{
+					"id": 107,
+					"name": "getModelName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 108,
+							"name": "getModelName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.getModelName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 11,
+							"character": 23
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.getModelName"
+					}
+				},
+				{
+					"id": 170,
+					"name": "removeAll",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 171,
+							"name": "removeAll",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 172,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 173,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 174,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.removeAll"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 35,
+							"character": 20
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.removeAll"
+					}
+				},
+				{
+					"id": 160,
+					"name": "removeById",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 161,
+							"name": "removeById",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 162,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 163,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 164,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.removeById"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 33,
+							"character": 21
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.removeById"
+					}
+				},
+				{
+					"id": 165,
+					"name": "removeOne",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 166,
+							"name": "removeOne",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 167,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 168,
+									"name": "query",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 169,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.removeOne"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 34,
+							"character": 20
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.removeOne"
+					}
+				},
+				{
+					"id": 104,
+					"name": "setCollectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 105,
+							"name": "setCollectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 106,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.setCollectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 10,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.setCollectionName"
+					}
+				},
+				{
+					"id": 85,
+					"name": "setConnection",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 86,
+							"name": "setConnection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 87,
+									"name": "configData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"name": "IConnectionConfig"
+									}
+								},
+								{
+									"id": 88,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								]
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.setConnection"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 9,
+							"character": 24
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.setConnection"
+					}
+				},
+				{
+					"id": 92,
+					"name": "setConnectionName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 93,
+							"name": "setConnectionName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 94,
+									"name": "connectionName",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ConnectableModel.setConnectionName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/connectable-model.abstract.d.ts",
+							"line": 11,
+							"character": 28
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ConnectableModel.setConnectionName"
+					}
+				},
+				{
+					"id": 101,
+					"name": "setModelName",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 102,
+							"name": "setModelName",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 103,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "ModelAbstract.setModelName"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/models/model.abstract.d.ts",
+							"line": 9,
+							"character": 23
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "ModelAbstract.setModelName"
+					}
+				},
+				{
+					"id": 71,
+					"name": "updateById",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isStatic": true,
+						"isExported": true,
+						"isPublic": true
+					},
+					"signatures": [
+						{
+							"id": 72,
+							"name": "updateById",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"typeParameter": [
+								{
+									"id": 73,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {}
+								}
+							],
+							"parameters": [
+								{
+									"id": 74,
+									"name": "id",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 75,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 76,
+									"name": "options",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "Partial",
+										"typeArguments": [
+											{
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "QueryOptions"
+													},
+													{
+														"type": "intrinsic",
+														"name": "any"
+													}
+												]
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Promise",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									}
+								]
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "ModelAbstract.updateById"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "classes/mongo-model.abstract.ts",
+							"line": 159,
+							"character": 34
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "ModelAbstract.updateById"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"kind": 512,
+					"children": [
+						53
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						100
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						195,
+						58,
+						155,
+						139,
+						63,
+						183,
+						135,
+						179,
+						151,
+						131,
+						175,
+						149,
+						143,
+						69,
+						145,
+						66,
+						186,
+						77,
+						97,
+						81,
+						60,
+						111,
+						121,
+						126,
+						116,
+						109,
+						89,
+						95,
+						190,
+						55,
+						107,
+						170,
+						160,
+						165,
+						104,
+						85,
+						92,
+						101,
+						71
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "classes/mongo-model.abstract.ts",
+					"line": 15,
+					"character": 32
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"name": "ConnectableModel"
+				}
+			],
+			"extendedBy": [
+				{
+					"type": "reference",
+					"name": "Dummy",
+					"id": 229
+				}
+			],
+			"implementedTypes": [
+				{
+					"type": "reference",
+					"name": "IModel"
+				}
+			]
+		},
+		{
+			"id": 210,
+			"name": "SugoiMongoError",
+			"kind": 128,
+			"kindString": "Class",
+			"flags": {
+				"isExported": true
+			},
+			"children": [
+				{
+					"id": 211,
+					"name": "constructor",
+					"kind": 512,
+					"kindString": "Constructor",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 212,
+							"name": "new SugoiMongoError",
+							"kind": 16384,
+							"kindString": "Constructor signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 213,
+									"name": "message",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 214,
+									"name": "code",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 215,
+									"name": "data",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "SugoiMongoError",
+								"id": 210
+							},
+							"overwrites": {
+								"type": "reference",
+								"name": "SugoiError.__constructor"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "GenericException.__constructor"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/generic.exception.d.ts",
+							"line": 2,
+							"character": 58
+						}
+					],
+					"overwrites": {
+						"type": "reference",
+						"name": "SugoiError.__constructor"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "GenericException.__constructor"
+					}
+				},
+				{
+					"id": 216,
+					"name": "code",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 2,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.code"
+					}
+				},
+				{
+					"id": 217,
+					"name": "message",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 3,
+							"character": 11
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.message"
+					}
+				},
+				{
+					"id": 218,
+					"name": "stack",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 4,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.stack"
+					}
+				},
+				{
+					"id": 221,
+					"name": "getCode",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 222,
+							"name": "getCode",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "SugoiError.getCode"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 8,
+							"character": 11
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.getCode"
+					}
+				},
+				{
+					"id": 219,
+					"name": "getMessage",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 220,
+							"name": "getMessage",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "SugoiError.getMessage"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 7,
+							"character": 14
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.getMessage"
+					}
+				},
+				{
+					"id": 223,
+					"name": "getStack",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 224,
+							"name": "getStack",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "SugoiError.getStack"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 9,
+							"character": 12
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.getStack"
+					}
+				},
+				{
+					"id": 227,
+					"name": "printError",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 228,
+							"name": "printError",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "SugoiError.printError"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 11,
+							"character": 14
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.printError"
+					}
+				},
+				{
+					"id": 225,
+					"name": "printStack",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 226,
+							"name": "printStack",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"inheritedFrom": {
+								"type": "reference",
+								"name": "SugoiError.printStack"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/core/dist/exceptions/sugoi-abstract.exception.d.ts",
+							"line": 10,
+							"character": 14
+						}
+					],
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "SugoiError.printStack"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Constructors",
+					"kind": 512,
+					"children": [
+						211
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						216,
+						217,
+						218
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						221,
+						219,
+						223,
+						227,
+						225
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "exceptions/mongo.exception.ts",
+					"line": 3,
+					"character": 28
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"name": "GenericException"
+				}
+			]
+		},
+		{
+			"id": 200,
+			"name": "IMongoConnectionConfig",
+			"kind": 256,
+			"kindString": "Interface",
+			"flags": {
+				"isExported": true
+			},
+			"children": [
+				{
+					"id": 209,
+					"name": "authDB",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 8,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.authDB"
+					}
+				},
+				{
+					"id": 206,
+					"name": "connectionName",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 5,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.connectionName"
+					}
+				},
+				{
+					"id": 205,
+					"name": "db",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 4,
+							"character": 6
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.db"
+					}
+				},
+				{
+					"id": 204,
+					"name": "hostName",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 3,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.hostName"
+					}
+				},
+				{
+					"id": 201,
+					"name": "newParser",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/mongo-connection-config.interface.ts",
+							"line": 4,
+							"character": 13
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 208,
+					"name": "password",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 7,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.password"
+					}
+				},
+				{
+					"id": 203,
+					"name": "port",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 2,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.port"
+					}
+				},
+				{
+					"id": 202,
+					"name": "protocol",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "interfaces/mongo-connection-config.interface.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 207,
+					"name": "user",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true,
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/@sugoi/orm/dist/interfaces/connection-config.interface.d.ts",
+							"line": 6,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"name": "IConnectionConfig.user"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						209,
+						206,
+						205,
+						204,
+						201,
+						208,
+						203,
+						202,
+						207
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "interfaces/mongo-connection-config.interface.ts",
+					"line": 3,
+					"character": 39
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"name": "IConnectionConfig"
+				}
+			]
+		},
+		{
+			"id": 422,
+			"name": "mockObject",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isLet": true
+			},
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 93,
+					"character": 21
+				}
+			],
+			"type": {
+				"type": "intrinsic",
+				"name": "any"
+			}
+		},
+		{
+			"id": 420,
+			"name": "recAmount",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 91,
+					"character": 22
+				}
+			],
+			"type": {
+				"type": "unknown",
+				"name": "10"
+			},
+			"defaultValue": "10"
+		},
+		{
+			"id": 421,
+			"name": "recNamePrefix",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 92,
+					"character": 26
+				}
+			],
+			"type": {
+				"type": "stringLiteral",
+				"value": "read_name_"
+			},
+			"defaultValue": "\"read_name_\""
+		},
+		{
+			"id": 406,
+			"name": "connect",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true
+			},
+			"signatures": [
+				{
+					"id": 407,
+					"name": "connect",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"type": {
+						"type": "reference",
+						"name": "Promise",
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "any"
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 6,
+					"character": 29
+				}
+			]
+		},
+		{
+			"id": 408,
+			"name": "disconnect",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true
+			},
+			"signatures": [
+				{
+					"id": 409,
+					"name": "disconnect",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"parameters": [
+						{
+							"id": 410,
+							"name": "client",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 411,
+							"name": "mongod",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						},
+						{
+							"id": 412,
+							"name": "connection",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Promise",
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "any"
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 37,
+					"character": 32
+				}
+			]
+		},
+		{
+			"id": 423,
+			"name": "setResources",
+			"kind": 64,
+			"kindString": "Function",
+			"flags": {
+				"isExported": true
+			},
+			"signatures": [
+				{
+					"id": 424,
+					"name": "setResources",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {},
+					"type": {
+						"type": "reference",
+						"name": "Promise",
+						"typeArguments": [
+							{
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "any"
+								}
+							}
+						]
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 95,
+					"character": 34
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "EXCEPTIONS",
+			"kind": 2097152,
+			"kindString": "Object literal",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"children": [
+				{
+					"id": 2,
+					"name": "CONFIGURATION_MISSING",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 4,
+							"name": "code",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "constants/exceptions.constant.ts",
+									"line": 4,
+									"character": 65
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							},
+							"defaultValue": "4004"
+						},
+						{
+							"id": 3,
+							"name": "message",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "constants/exceptions.constant.ts",
+									"line": 4,
+									"character": 36
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							},
+							"defaultValue": "\"Missing configuration\""
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								4,
+								3
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "constants/exceptions.constant.ts",
+							"line": 4,
+							"character": 25
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "constants/exceptions.constant.ts",
+					"line": 3,
+					"character": 23
+				}
+			],
+			"type": {
+				"type": "intrinsic",
+				"name": "object"
+			}
+		},
+		{
+			"id": 50,
+			"name": "SortOptionsMongo",
+			"kind": 2097152,
+			"kindString": "Object literal",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"children": [
+				{
+					"id": 51,
+					"name": "__computed",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "constants/sort-options-mongo.constant.ts",
+							"line": 4,
+							"character": 22
+						},
+						{
+							"fileName": "constants/sort-options-mongo.constant.ts",
+							"line": 5,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": "1"
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						51
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "constants/sort-options-mongo.constant.ts",
+					"line": 3,
+					"character": 29
+				}
+			],
+			"type": {
+				"type": "intrinsic",
+				"name": "object"
+			}
+		},
+		{
+			"id": 413,
+			"name": "exceptionCheck",
+			"kind": 2097152,
+			"kindString": "Object literal",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"children": [
+				{
+					"id": 414,
+					"name": "toBeExceptionOf",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 415,
+							"name": "toBeExceptionOf",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 416,
+									"name": "received",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 417,
+									"name": "expected",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 418,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"sources": [
+												{
+													"fileName": "__tests__/model.test.ts",
+													"line": 55,
+													"character": 39
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 419,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {}
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "__tests__/model.test.ts",
+							"line": 55,
+							"character": 19
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						414
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "__tests__/model.test.ts",
+					"line": 54,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "intrinsic",
+				"name": "object"
+			}
+		}
+	],
+	"groups": [
+		{
+			"title": "Classes",
+			"kind": 128,
+			"children": [
+				229,
+				5,
+				52,
+				210
+			]
+		},
+		{
+			"title": "Interfaces",
+			"kind": 256,
+			"children": [
+				200
+			]
+		},
+		{
+			"title": "Variables",
+			"kind": 32,
+			"children": [
+				422,
+				420,
+				421
+			]
+		},
+		{
+			"title": "Functions",
+			"kind": 64,
+			"children": [
+				406,
+				408,
+				423
+			]
+		},
+		{
+			"title": "Object literals",
+			"kind": 2097152,
+			"children": [
+				1,
+				50,
+				413
+			]
+		}
+	]
+}
