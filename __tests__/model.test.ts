@@ -99,7 +99,6 @@ export async function setResources() {
     const p = [];
     for (let i = 0; i < recAmount; i++) {
         const dummy = Dummy.builder(`${recNamePrefix}${i}`);
-        dummy.hideIgnoredFields();
         p.push(
             new Promise(resolve => {
                 setTimeout(() => dummy.save().then(resolve), i * 300)
