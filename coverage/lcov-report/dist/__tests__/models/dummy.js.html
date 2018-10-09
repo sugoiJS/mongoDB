@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for dist/__tests__/models/dummy.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">dist/__tests__/models</a> dummy.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.91% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>30/33</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">61.29% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>19/31</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>12/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.43% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>27/28</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? <span class="branch-0 cbranch-no" title="branch not covered" >desc = Object.getOwnPropertyDescriptor(target, key) </span>: desc, d;
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else <span class="cstat-no" title="statement not covered" >for (var i = decorators.length - 1; i &gt;= 0; i--) <span class="cstat-no" title="statement not covered" >if (d = decorators[i]) <span class="cstat-no" title="statement not covered" >r = (c &lt; 3 ? d(r) : c &gt; 3 ? d(target, key, r) : d(target, key)) || r;</span></span></span>
+    return c &gt; 3 &amp;&amp; r &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >Object.defineProperty(target, key, r),</span> r;
+};
+var __metadata = (this &amp;&amp; this.__metadata) || function (k, v) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof Reflect === "object" &amp;&amp; typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var Dummy_1;
+const index_1 = require("../../index");
+const orm_1 = require("@sugoi/orm");
+let Dummy = Dummy_1 = class Dummy extends index_1.MongoModel {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+    get id() {
+        return this._id;
+    }
+    set id(id) {
+        this._id = id;
+    }
+    beforeValidate() {
+        this.name = this.isUpdate ? "u_" + this.name : this.name;
+    }
+    beforeUpdate() {
+        this.lastUpdated = "today";
+    }
+    afterUpdate(updateResponse) {
+        this.updated = this.lastUpdated === "today";
+    }
+    beforeSave() {
+        this.lastSaved = "today";
+        this.lastSavedTime = new Date().getTime();
+    }
+    afterSave(saveResponse) {
+        this.saved = true;
+    }
+    validate() {
+        return Promise.resolve(isNaN(parseInt(this.name)));
+    }
+    static builder(name) {
+        return new Dummy_1(name);
+    }
+};
+__decorate([
+    orm_1.Ignore(),
+    __metadata("design:type", Boolean)
+], Dummy.prototype, "saved", void 0);
+__decorate([
+    orm_1.Ignore(),
+    __metadata("design:type", Boolean)
+], Dummy.prototype, "updated", void 0);
+__decorate([
+    orm_1.Ignore(),
+    __metadata("design:type", Boolean)
+], Dummy.prototype, "isUpdate", void 0);
+Dummy = Dummy_1 = __decorate([
+    index_1.ConnectionName("TESTING"),
+    index_1.ModelName("dummy"),
+    __metadata("design:paramtypes", [String])
+], Dummy);
+exports.Dummy = Dummy;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 10 2018 00:15:39 GMT+0300 (Jerusalem Daylight Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>
