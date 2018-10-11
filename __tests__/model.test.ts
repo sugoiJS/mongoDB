@@ -384,5 +384,24 @@ describe("Model extra functions", () => {
         expect(res.saved).not.toBeTruthy();
         expect(JSON.parse(JSON.stringify(res)).modelInstanceMeta).not.toBeDefined();
     });
+    it("Failed because of required fields",async ()=>{
+        expect.assertions(1);
+        let dummy = Dummy.builder("tester_100");
+        dummy.name = "";
+        try {
+         const res = await dummy.save();
+        }catch (err){
+            (<any>expect(err)).toBeExceptionOf({
+                type: SugoiModelException,
+                message: "INVALID",
+                code: 4000,
+                data: [{
+                    valid: false,
+                    expectedValue: '!null && !"" ',
+                    field: 'name'
+                }]
+            })
+        }
+    });
 
 });

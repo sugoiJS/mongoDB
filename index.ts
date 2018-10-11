@@ -27,6 +27,8 @@ export {
     QueryOptions,
     SortItem,
     SortOptions,
-    SugoiModelException
+    SugoiModelException,
+    Ignore,
+    Required
 } from "@sugoi/orm";
 

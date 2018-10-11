@@ -7,9 +7,10 @@ import {
     MongoModel,
     ConnectionName,
     IValidate,
-    ModelName
+    ModelName,
+    Ignore,
+    Required
 } from "../../index";
-import {Ignore} from "@sugoi/orm";
 
 
 
@@ -33,9 +34,10 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     public updated: boolean;
     @Ignore()
     public isUpdate: boolean;
-
-    constructor(public name: string) {
+    @Required() public name:string;
+    constructor(name: string) {
         super();
+        this.name = name;
     }
 
     beforeValidate(): Promise<any> | void {
