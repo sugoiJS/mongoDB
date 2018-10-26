@@ -263,7 +263,18 @@ describe("Model update test suit", () => {
         expect(dummyRes).toEqual({name: "MyTest", lastUpdated: "today", updated: true})
     });
 
-    // it("update all",async ()=>{})
+    it("update all",async ()=>{
+        const date = new Date().toISOString();
+        expect.assertions(2);
+
+        const options = QueryOptions.builder().setSkipRequiredValidation(true);
+        const query = {name:{$regex:recNamePrefix}};
+        let updateRes = await Dummy.updateAll(query,{date},options);
+        let res = await Dummy.find(query);
+        expect(res.every(rec=>rec.date === date)).toBeTruthy();
+        expect(res.length).toEqual(updateRes.nModified);
+
+    })
 
 });
 

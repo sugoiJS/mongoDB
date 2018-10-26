@@ -77,8 +77,8 @@ export abstract class MongoModel extends ConnectableModel {
         return this.getCollection(this.connectionName, this.getCollectionName())
             .then(collection => {
                 let queryBuilder = collection.find(query)
-                    .limit(options.getLimit() || 0)
-                    .skip(options.getOffset() || 0);
+                    .limit(options.limit || 0)
+                    .skip(("getOffset" in options && options.getOffset()) || 0);
                 if (options.getSortOptions() && options.getSortOptions().length > 0) {
                     options.getSortOptions().forEach(sortOption => {
                         sortObject[sortOption.field] = SortOptionsMongo[sortOption.sortOption];
@@ -107,14 +107,21 @@ export abstract class MongoModel extends ConnectableModel {
     }
 
 
-    public updateEmitter(options: ReplaceOneOptions = {upsert: false}): Promise<any> {
+    public static async updateAll<T = any>(query: any, data: any, options?: Partial<QueryOptions | any>): Promise<T> {
+        options.multi = options.hasOwnProperty("multi")? options.multi : true;
+        return super.updateAll(query,data,options);
+    }
+    public updateEmitter(options: any|ReplaceOneOptions = {upsert: false}, query: any): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
-                const formalizeValue = Object.assign({},this);
+                const formalizeValue = Object.assign({}, this);
                 const primaryKey = getPrimaryKey(this);
                 delete formalizeValue[primaryKey];
-                const query = {[primaryKey]: MongoModel.getIdObject(this[primaryKey])};
-                return (<any>this).constructor.collection.updateOne(query, {$set: formalizeValue}, options)
+                if (query[primaryKey])
+                    query[primaryKey] = MongoModel.getIdObject(query[primaryKey]);
+                return options.multi
+                    ? (<any>this).constructor.collection.updateMany(query, {$set: formalizeValue}, options)
+                    : (<any>this).constructor.collection.updateOne(query, {$set: formalizeValue}, options)
             })
             .then((res: any) => res.result)
             .then((res: any) => {

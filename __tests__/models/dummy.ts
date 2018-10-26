@@ -28,13 +28,15 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     public lastUpdated;
     public lastSaved;
     public lastSavedTime;
+    public date:Date;
     @Ignore()
     public saved: boolean;
     @Ignore()
     public updated: boolean;
     @Ignore()
     public isUpdate: boolean;
-    @Required() public name:string;
+    @Required()
+    public name:string;
     constructor(name: string) {
         super();
         this.name = name;
@@ -46,10 +48,13 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
 
     beforeUpdate(): Promise<any> | void {
         this.lastUpdated = "today";
+        if(!this.name)
+            this.addFieldsToIgnore("name");
     }
 
     afterUpdate(updateResponse?: any): Promise<any> | void {
         this.updated = this.lastUpdated === "today";
+        this.removeFieldsFromIgnored("name")
     }
 
     beforeSave(): Promise<any> | void {
