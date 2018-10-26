@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1540555404650" clover="3.2.0">
+  <project timestamp="1540555404650" name="All files">
+    <metrics statements="191" coveredstatements="178" conditionals="150" coveredconditionals="106" methods="66" coveredmethods="61" elements="407" coveredelements="345" complexity="0" loc="191" ncloc="191" packages="4" files="6" classes="6">
+      <package name="dist">
+        <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="index.js" path="C:\Users\Orel Balilti\Documents\Projects\Sugoi\mongoDB\dist\index.js">
+          <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="dist.__tests__.models">
+        <metrics statements="31" coveredstatements="30" conditionals="33" coveredconditionals="21" methods="12" coveredmethods="12"/>
+        <file name="dummy.js" path="C:\Users\Orel Balilti\Documents\Projects\Sugoi\mongoDB\dist\__tests__\models\dummy.js">
+          <metrics statements="31" coveredstatements="30" conditionals="33" coveredconditionals="21" methods="12" coveredmethods="12"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="5" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="5" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="5" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="5" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="87" type="stmt"/>
+          <line num="17" count="87" type="stmt"/>
+          <line num="20" count="8" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="26" count="28" type="cond" truecount="2" falsecount="0"/>
+          <line num="29" count="6" type="stmt"/>
+          <line num="30" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="34" count="5" type="stmt"/>
+          <line num="35" count="5" type="stmt"/>
+          <line num="38" count="19" type="stmt"/>
+          <line num="39" count="19" type="stmt"/>
+          <line num="42" count="18" type="stmt"/>
+          <line num="45" count="27" type="stmt"/>
+          <line num="48" count="20" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="59" count="1" type="stmt"/>
+          <line num="63" count="1" type="stmt"/>
+          <line num="67" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="dist.classes">
+        <metrics statements="135" coveredstatements="123" conditionals="117" coveredconditionals="85" methods="54" coveredmethods="49"/>
+        <file name="mongo-connection.class.js" path="C:\Users\Orel Balilti\Documents\Projects\Sugoi\mongoDB\dist\classes\mongo-connection.class.js">
+          <metrics statements="32" coveredstatements="28" conditionals="14" coveredconditionals="9" methods="10" coveredmethods="8"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="15" count="1" type="cond" truecount="2" falsecount="2"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="40" count="13" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="46" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="47" count="1" type="stmt"/>
+          <line num="48" count="1" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="53" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="59" count="1" type="stmt"/>
+          <line num="60" count="1" type="cond" truecount="2" falsecount="2"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="63" count="1" type="stmt"/>
+          <line num="64" count="1" type="stmt"/>
+          <line num="67" count="1" type="stmt"/>
+        </file>
+        <file name="mongo-model.abstract.js" path="C:\Users\Orel Balilti\Documents\Projects\Sugoi\mongoDB\dist\classes\mongo-model.abstract.js">
+          <metrics statements="103" coveredstatements="95" conditionals="103" coveredconditionals="76" methods="44" coveredmethods="41"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="2" type="cond" truecount="2" falsecount="2"/>
+          <line num="4" count="2" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="2" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="2" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="12" count="35" type="cond" truecount="2" falsecount="0"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="36" type="cond" truecount="2" falsecount="0"/>
+          <line num="16" count="35" type="cond" truecount="2" falsecount="0"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="26" count="87" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="30" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="36" count="18" type="stmt"/>
+          <line num="39" count="12" type="stmt"/>
+          <line num="40" count="12" type="stmt"/>
+          <line num="41" count="12" type="stmt"/>
+          <line num="42" count="12" type="stmt"/>
+          <line num="45" count="5" type="stmt"/>
+          <line num="48" count="31" type="stmt"/>
+          <line num="49" count="31" type="cond" truecount="2" falsecount="0"/>
+          <line num="50" count="30" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="55" count="11" type="stmt"/>
+          <line num="56" count="11" type="stmt"/>
+          <line num="57" count="11" type="cond" truecount="2" falsecount="0"/>
+          <line num="58" count="5" type="stmt"/>
+          <line num="60" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="61" count="1" type="stmt"/>
+          <line num="63" count="11" type="stmt"/>
+          <line num="65" count="11" type="stmt"/>
+          <line num="68" count="11" type="cond" truecount="4" falsecount="0"/>
+          <line num="69" count="5" type="stmt"/>
+          <line num="70" count="5" type="stmt"/>
+          <line num="72" count="5" type="stmt"/>
+          <line num="74" count="11" type="stmt"/>
+          <line num="77" count="11" type="cond" truecount="1" falsecount="1"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="80" count="11" type="stmt"/>
+          <line num="85" count="19" type="stmt"/>
+          <line num="87" count="19" type="stmt"/>
+          <line num="89" count="18" type="stmt"/>
+          <line num="94" count="1" type="stmt"/>
+          <line num="95" count="1" type="stmt"/>
+          <line num="96" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="97" count="1" type="stmt"/>
+          <line num="101" count="6" type="stmt"/>
+          <line num="103" count="6" type="stmt"/>
+          <line num="104" count="6" type="stmt"/>
+          <line num="105" count="6" type="stmt"/>
+          <line num="106" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="107" count="5" type="stmt"/>
+          <line num="108" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="112" count="6" type="stmt"/>
+          <line num="114" count="6" type="cond" truecount="4" falsecount="0"/>
+          <line num="115" count="5" type="stmt"/>
+          <line num="117" count="1" type="stmt"/>
+          <line num="121" count="6" type="stmt"/>
+          <line num="122" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="123" count="3" type="stmt"/>
+          <line num="125" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="126" count="1" type="stmt"/>
+          <line num="128" count="6" type="stmt"/>
+          <line num="130" count="6" type="cond" truecount="4" falsecount="0"/>
+          <line num="134" count="6" type="stmt"/>
+          <line num="136" count="6" type="cond" truecount="4" falsecount="0"/>
+          <line num="137" count="5" type="stmt"/>
+          <line num="139" count="1" type="stmt"/>
+          <line num="143" count="0" type="stmt"/>
+          <line num="144" count="0" type="stmt"/>
+          <line num="145" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="147" count="0" type="stmt"/>
+          <line num="150" count="0" type="stmt"/>
+          <line num="153" count="4" type="stmt"/>
+          <line num="154" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="155" count="4" type="stmt"/>
+          <line num="156" count="4" type="stmt"/>
+          <line num="157" count="4" type="stmt"/>
+          <line num="160" count="3" type="stmt"/>
+          <line num="161" count="3" type="stmt"/>
+          <line num="162" count="3" type="stmt"/>
+          <line num="163" count="3" type="stmt"/>
+          <line num="164" count="3" type="stmt"/>
+          <line num="168" count="67" type="cond" truecount="2" falsecount="0"/>
+          <line num="169" count="2" type="stmt"/>
+          <line num="170" count="2" type="stmt"/>
+          <line num="172" count="67" type="cond" truecount="2" falsecount="0"/>
+          <line num="173" count="59" type="stmt"/>
+          <line num="174" count="67" type="stmt"/>
+          <line num="177" count="17" type="cond" truecount="3" falsecount="0"/>
+          <line num="180" count="1" type="stmt"/>
+          <line num="184" count="1" type="stmt"/>
+          <line num="188" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="dist.constants">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="exceptions.constant.js" path="C:\Users\Orel Balilti\Documents\Projects\Sugoi\mongoDB\dist\constants\exceptions.constant.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="sort-options-mongo.constant.js" path="C:\Users\Orel Balilti\Documents\Projects\Sugoi\mongoDB\dist\constants\sort-options-mongo.constant.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
