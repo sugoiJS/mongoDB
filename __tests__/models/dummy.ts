@@ -39,7 +39,7 @@ export class Dummy extends MongoModel implements IValidate, IBeforeUpdate, IAfte
     public name:string;
     constructor(name: string) {
         super();
-        this.name = name;
+        this.name = name || "default";
     }
 
     beforeValidate(): Promise<any> | void {

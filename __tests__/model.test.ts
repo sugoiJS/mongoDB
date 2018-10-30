@@ -369,6 +369,18 @@ describe("Model extra functions", () => {
         expect({name: dummyRes.name, id: dummyRes.id}).toEqual({name: JSONDummy.name, id: JSONDummy.id});
     });
 
+    it("Clone without name", () => {
+        const originalData = {test:true};
+        const dummyClone = Dummy.clone(originalData);
+        expect(dummyClone.constructor.name).toBe("Dummy");
+        expect(dummyClone).toEqual(originalData);
+        expect(dummyClone instanceof Dummy).toBeTruthy();
+        expect("save" in dummyClone).toBeTruthy();
+        expect("update" in dummyClone).toBeTruthy();
+        expect("remove" in dummyClone).toBeTruthy();
+    });
+
+
     it("Formalize value with ignored",async ()=>{
         expect.assertions(4);
         let res = await Dummy.builder("tester_100").save();
