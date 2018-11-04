@@ -29,6 +29,34 @@ export abstract class MongoModel extends ConnectableModel {
     @Ignore()
     protected client: MongoClient;
 
+    private mongoData: any;
+
+
+    public set nModified(n:number){
+        this.mongoData = this.mongoData || {};
+        this.mongoData.nModified = n;
+    };
+    public get nModified():number{
+        return this.mongoData && this.mongoData.nModified;
+    };
+
+    public set ok(n:number){
+        this.mongoData = this.mongoData || {};
+        this.mongoData.ok = n;
+    };
+    public get ok():number{
+        return this.mongoData && this.mongoData.ok;
+    };
+
+    public set n(n:number){
+        this.mongoData = this.mongoData || {};
+        this.mongoData.n = n;
+    };
+    public get n():number{
+        return this.mongoData && this.mongoData.n;
+    };
+
+
     protected static collection: Collection;
 
     constructor() {
@@ -99,8 +127,10 @@ export abstract class MongoModel extends ConnectableModel {
     public saveEmitter(options: CollectionInsertOneOptions): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
+                this.addFieldsToIgnore("mongoData");
                 return (<any>this).constructor.collection.insertOne(this, options)
                     .then((value) => {
+                        this.removeFieldsFromIgnored("mongoData");
                         return value.ops[0];
                     })
             });
@@ -114,6 +144,7 @@ export abstract class MongoModel extends ConnectableModel {
     public updateEmitter(options: any|ReplaceOneOptions = {upsert: false}, query: any): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
+                this.addFieldsToIgnore("mongoData");
                 const formalizeValue = Object.assign({}, this);
                 const primaryKey = getPrimaryKey(this);
                 delete formalizeValue[primaryKey];
@@ -125,8 +156,10 @@ export abstract class MongoModel extends ConnectableModel {
             })
             .then((res: any) => res.result)
             .then((res: any) => {
-                if (res.ok && res.nModified)
+                if (res.ok && res.nModified) {
+                    this.removeFieldsFromIgnored("mongoData");
                     return res;
+                }
                 else
                     throw new SugoiModelException("Not updated", 5000)
 
@@ -149,8 +182,9 @@ export abstract class MongoModel extends ConnectableModel {
             })
             .then((res: any) => res.result)
             .then((res: any) => {
-                if (res.ok && res.n)
+                if (res.ok && res.n) {
                     return res;
+                }
                 else
                     throw new SugoiModelException("Not removed", 5000)
 
