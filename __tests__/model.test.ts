@@ -360,7 +360,7 @@ describe("Model extra functions", () => {
         expect.assertions(2);
         const name = "test_clone";
         const d = await Dummy.builder("test").save();
-        const dummy = Dummy.clone({name, id: d.id});
+        const dummy = Dummy.cast({name, id: d.id});
         const JSONDummy = {...dummy.toJSON()};
         expect(dummy.constructor.name).toBe("Dummy");
         const dummyRes = await dummy.update()

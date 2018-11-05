@@ -20,6 +20,7 @@ import {
 } from "@sugoi/orm";
 import {SortOptionsMongo} from "../constants/sort-options-mongo.constant";
 import {IMongoConnectionConfig} from "../interfaces/mongo-connection-config.interface";
+import {MongoResponse} from "./mongo-response";
 
 export abstract class MongoModel extends ConnectableModel {
 
@@ -29,31 +30,31 @@ export abstract class MongoModel extends ConnectableModel {
     @Ignore()
     protected client: MongoClient;
 
-    private mongoData: any;
+    private MongoResponse: MongoResponse;
 
 
     public set nModified(n:number){
-        this.mongoData = this.mongoData || {};
-        this.mongoData.nModified = n;
+        this.MongoResponse = this.MongoResponse || new MongoResponse();
+        this.MongoResponse.nModified = n;
     };
     public get nModified():number{
-        return this.mongoData && this.mongoData.nModified;
+        return this.MongoResponse && this.MongoResponse.nModified;
     };
 
     public set ok(n:number){
-        this.mongoData = this.mongoData || {};
-        this.mongoData.ok = n;
+        this.MongoResponse = this.MongoResponse || new MongoResponse();
+        this.MongoResponse.ok = n;
     };
     public get ok():number{
-        return this.mongoData && this.mongoData.ok;
+        return this.MongoResponse && this.MongoResponse.ok;
     };
 
     public set n(n:number){
-        this.mongoData = this.mongoData || {};
-        this.mongoData.n = n;
+        this.MongoResponse = this.MongoResponse || new MongoResponse();
+        this.MongoResponse.n = n;
     };
     public get n():number{
-        return this.mongoData && this.mongoData.n;
+        return this.MongoResponse && this.MongoResponse.n;
     };
 
 
@@ -119,6 +120,7 @@ export abstract class MongoModel extends ConnectableModel {
                         if (res.length === 0) {
                             throw new SugoiModelException("Not Found", 404);
                         }
+                        res.forEach(MongoModel.castIdToString);
                         return res;
                     });
             });
@@ -127,11 +129,14 @@ export abstract class MongoModel extends ConnectableModel {
     public saveEmitter(options: CollectionInsertOneOptions): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
-                this.addFieldsToIgnore("mongoData");
+                this.addFieldsToIgnore("MongoResponse");
                 return (<any>this).constructor.collection.insertOne(this, options)
                     .then((value) => {
-                        this.removeFieldsFromIgnored("mongoData");
+                        this.removeFieldsFromIgnored("MongoResponse");
                         return value.ops[0];
+                    }).then(res=>{
+                        MongoModel.castIdToString(res);
+                        return res;
                     })
             });
     }
@@ -144,7 +149,7 @@ export abstract class MongoModel extends ConnectableModel {
     public updateEmitter(options: any|ReplaceOneOptions = {upsert: false}, query: any): Promise<any> {
         return (<any>this).constructor.setCollection()
             .then(() => {
-                this.addFieldsToIgnore("mongoData");
+                this.addFieldsToIgnore("MongoResponse");
                 const formalizeValue = Object.assign({}, this);
                 const primaryKey = getPrimaryKey(this);
                 delete formalizeValue[primaryKey];
@@ -157,7 +162,8 @@ export abstract class MongoModel extends ConnectableModel {
             .then((res: any) => res.result)
             .then((res: any) => {
                 if (res.ok && res.nModified) {
-                    this.removeFieldsFromIgnored("mongoData");
+                    this.removeFieldsFromIgnored("MongoResponse");
+                    MongoModel.castIdToString(res);
                     return res;
                 }
                 else
@@ -217,15 +223,37 @@ export abstract class MongoModel extends ConnectableModel {
         return super.updateById(id, data, options);
     }
 
-    public static clone<T=any>(data: any): any;
-    public static clone<T=any>(classIns: any, data?: any): any {
-        if (arguments.length === 1) {
+
+    public static clone<T=any>(data: any): T;
+    public static clone<T=any>(data: any, applyConstructor: boolean): T;
+    public static clone<T=any>(classInstance: any, data: any): T;
+    public static clone<T=any>(classInstance: any, data: any, applyConstructor: boolean): T;
+
+    /**
+     * Transform data into class(T) instance
+     * @param classIns - class instance
+     * @param data - data to transform
+     * @param {boolean }applyConstructor - should apply class constructor
+     * @returns {T}
+     */
+    public static clone<T = any>(classIns: any, data?: any, applyConstructor: boolean = false): T {
+        if (
+            arguments.length < 3
+            && ((arguments.length === 1) || (arguments.length === 2 && typeof arguments[1] === "boolean"))
+        ) {
             data = classIns;
             classIns = this;
         }
-        if (data._id)
-            data._id = data._id.toString();
-        return super.clone(classIns, data);
+        MongoModel.castIdToString(data);
+        return super.clone<T>(classIns, data,applyConstructor);
+    }
+
+    public static castIdToString(mongoModel:{_id:Buffer|string}){
+        if(mongoModel._id) mongoModel._id = mongoModel._id.toString();
+    }
+
+    public static cast<T = any>(data: any, applyConstructor: boolean = false): T {
+        return this.clone<T>(data,applyConstructor);
     }
 
     private static checkForId(id) {
