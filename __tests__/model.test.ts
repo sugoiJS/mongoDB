@@ -1,7 +1,7 @@
 import {IConnectionConfig, QueryOptions, SugoiModelException, SortItem, SortOptions} from "../index";
 import {Dummy} from "./models/dummy";
 import {MongoModel} from "../classes/mongo-model.abstract";
-import MongodbMemoryServer from 'mongodb-memory-server';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 export async function connect() {
     let client, connection;
@@ -14,7 +14,7 @@ export async function connect() {
         password: null,
         newParser: true
     };
-    const mongod = new MongodbMemoryServer({
+    const mongod = new MongoMemoryServer({
         instance: {
             port: config.port,
             ip: config.hostName,
