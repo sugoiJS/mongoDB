@@ -1,5 +1,5 @@
 import {CONNECTION_STATUS, IConnection} from "@sugoi/orm";
-import {Db, MongoClient} from "mongodb";
+import {Db, MongoClient, MongoClientOptions} from "mongodb";
 import {IMongoConnectionConfig} from "../interfaces/mongo-connection-config.interface";
 
 
@@ -17,12 +17,14 @@ export class MongoConnection implements IConnection,IMongoConnectionConfig {
     user?: string;
     password?: string;
     authDB?: string;
+    additionalConfig?: MongoClientOptions = {};
     public newParser: boolean = false;
 
 
     connect(): Promise<boolean> {
         const connectionConfig = {
-            authSource: this.authDB || this.db
+            authSource: this.authDB || this.db,
+            ...this.additionalConfig
         };
         if (this.user && this.password) {
             connectionConfig['auth'] = {
@@ -80,7 +82,10 @@ export class MongoConnection implements IConnection,IMongoConnectionConfig {
         if (this.user && this.password) {
             connString += `${this.user}:${this.password}@`;
         }
-        connString += `${this.hostName}:${this.port}`;
+        connString += this.hostName
+        if(this.port) {
+            connString += `:${this.port}`;
+        }
         return connString;
     }
 }
