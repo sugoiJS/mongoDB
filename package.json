@@ -39,17 +39,17 @@
   "license": "MIT",
   "dependencies": {
     "@sugoi/core": "^4.0.6",
-    "@sugoi/orm": "^4.0.0",
-    "mongodb": "^3.5.6"
+    "@sugoi/orm": "^4.0.1",
+    "mongodb": "^3.6.2"
   },
   "devDependencies": {
     "@types/jest": "^24.9.1",
-    "@types/mongodb": "^3.5.14",
-    "@types/node": "^12.12.37",
+    "@types/mongodb": "^3.5.27",
+    "@types/node": "^12.12.62",
     "jest": "^24.9.0",
     "mongodb-memory-server": "^5.2.11",
     "rimraf": "^2.7.1",
-    "ts-jest": "^24.3.0"
+    "ts-jest": "^26.4.0"
   },
   "jest": {
     "collectCoverage": true,
