@@ -12,6 +12,7 @@ export class MongoConnection implements IConnection,IMongoConnectionConfig {
         dbInstance: Db,
         client:MongoClient
     };
+    connectionString?: string;
     db?: string;
     connectionName?: string;
     user?: string;
@@ -78,6 +79,9 @@ export class MongoConnection implements IConnection,IMongoConnectionConfig {
     }
 
     public getConnectionString() {
+        if(this.connectionString){
+            return this.connectionString;
+        }
         let connString = this.protocol;
         if (this.user && this.password) {
             connString += `${this.user}:${this.password}@`;
